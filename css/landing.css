@@ -23,8 +23,8 @@
 
 /* Hero */
 .hero {
-  padding-top: calc(var(--header-height) + var(--space-6));
-  padding-bottom: var(--space-8);
+  padding-top: calc(var(--header-height) + var(--section-gap));
+  padding-bottom: var(--section-gap);
   background-color: var(--bg-body);
   border-bottom: 1px solid var(--border-color);
 }
@@ -294,8 +294,7 @@
 
 /* Awards slider */
 .awards {
-  background-color: var(--bg-body);
-  border-top: 1px solid var(--border-color);
+  background-color: var(--bg-card);
 }
 
 .awards__frame {
@@ -318,6 +317,8 @@
   overflow: hidden;
   width: 100%;
   background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
 }
 
 .awards__track {
@@ -433,8 +434,6 @@
   justify-content: center;
   gap: var(--space-3);
   padding: var(--space-2) var(--space-3);
-  background-color: var(--bg-body);
-  border-top: 1px solid var(--border-color);
 }
 
 .awards__btn {
@@ -488,22 +487,15 @@
 }
 
 .dark-theme .awards {
-  background-color: var(--bg-body);
+  background-color: var(--bg-card);
 }
 
 .dark-theme .awards__frame,
 .dark-theme .awards__slider,
 .dark-theme .award-slide,
-.dark-theme .awards__btn {
-  background-color: var(--bg-card);
-}
-
-.dark-theme .awards__controls {
-  background-color: var(--bg-body);
-}
-
+.dark-theme .awards__btn,
 .dark-theme .awards__dots {
-  background-color: var(--bg-body);
+  background-color: var(--bg-card);
 }
 
 .dark-theme .award-slide__sticker {

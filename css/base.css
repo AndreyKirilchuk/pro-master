@@ -95,13 +95,8 @@ h4 { font-size: var(--font-size-xl); }
 }
 
 .section {
-  padding: var(--space-6) 0;
-}
-
-@media (min-width: 768px) {
-  .section {
-    padding: var(--space-8) 0;
-  }
+  padding-top: var(--section-gap);
+  padding-bottom: var(--section-gap);
 }
 
 .section__title {

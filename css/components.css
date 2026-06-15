@@ -24,8 +24,6 @@
 
 .btn--primary:hover {
   background-color: var(--color-primary-dark);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-green);
   color: var(--text-on-primary);
 }
 
@@ -38,8 +36,6 @@
 .btn--accent:hover,
 .btn--secondary-green:hover {
   background-color: var(--color-accent-hover);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-green);
   color: var(--text-on-primary);
 }
 
@@ -50,8 +46,6 @@
 
 .btn--dark:hover {
   background-color: var(--color-dark-soft);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
   color: var(--text-on-dark);
 }
 
@@ -62,9 +56,9 @@
 }
 
 .btn--outline:hover {
-  background-color: var(--color-primary);
-  color: var(--text-on-primary);
-  transform: translateY(-2px);
+  background-color: var(--color-primary-light);
+  border-color: var(--color-primary-dark);
+  color: var(--color-primary-dark);
 }
 
 .btn--outline-dark {
@@ -76,7 +70,6 @@
 .btn--outline-dark:hover {
   background-color: var(--color-dark);
   color: var(--text-on-dark);
-  transform: translateY(-2px);
 }
 
 .dark-theme .btn--outline-dark {
@@ -85,8 +78,8 @@
 }
 
 .dark-theme .btn--outline-dark:hover {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
   color: var(--text-on-primary);
 }
 
@@ -119,8 +112,6 @@
 
 .btn--admin:hover {
   background-color: var(--color-primary-dark);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-green);
   color: var(--text-on-primary);
 }
 
@@ -439,7 +430,7 @@
 .footer {
   background-color: var(--bg-card);
   border-top: 1px solid var(--border-color);
-  padding: var(--space-5) 0 var(--space-3);
+  padding: var(--section-gap) 0 var(--section-gap);
 }
 
 .footer__inner {
