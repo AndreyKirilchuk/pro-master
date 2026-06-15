@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вход — ПроМастер</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body class="page-with-header">
+
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="header__logo">
+        <img src="assets/images/logo.png" alt="ПроМастер" width="40" height="40">
+        ПроМастер
+      </a>
+      <button class="burger" aria-label="Открыть меню"><span></span><span></span><span></span></button>
+      <nav class="header__nav">
+        <ul class="header__nav-list">
+          <li><a href="index.html#about" class="header__nav-link">О проекте</a></li>
+          <li><a href="index.html#stages" class="header__nav-link">Этапы</a></li>
+          <li><a href="index.html#awards" class="header__nav-link">Награды</a></li>
+          <li><a href="index.html#faq" class="header__nav-link">FAQ</a></li>
+        </ul>
+        <div class="header__actions">
+          <button class="theme-toggle" aria-label="Переключить тему">
+            <svg class="icon-sun" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            <svg class="icon-moon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <a href="login.html" class="btn btn--primary">Войти</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="auth-page">
+    <div class="auth-layout">
+      <div class="auth-art">
+        <h2 class="auth-art__title">С возвращением!</h2>
+        <p class="auth-art__text">Продолжай свой путь к мастерству и собирай новые стикеры</p>
+        <svg class="auth-art__illustration" viewBox="0 0 200 200" fill="none">
+          <circle cx="100" cy="100" r="80" fill="rgba(255,255,255,0.15)"/>
+          <circle cx="100" cy="80" r="35" fill="rgba(255,255,255,0.3)"/>
+          <rect x="60" y="120" width="80" height="60" rx="30" fill="rgba(255,255,255,0.3)"/>
+          <rect x="130" y="60" width="40" height="50" rx="8" fill="rgba(255,255,255,0.2)" transform="rotate(15 150 85)"/>
+          <text x="145" y="90" fill="#fff" font-size="20" font-weight="800" transform="rotate(15 150 85)">★</text>
+        </svg>
+      </div>
+
+      <div class="auth-form-side">
+        <h1 class="auth-form__title">Вход в аккаунт</h1>
+        <p class="auth-form__subtitle">Введите данные для входа в профиль</p>
+
+        <form action="profile.html">
+          <div class="form-group">
+            <label class="form-label" for="email">Email</label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="example@mail.ru" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="password">Пароль</label>
+            <input class="form-input form-input--accent" type="password" id="password" name="password" placeholder="••••••••" required>
+          </div>
+          <label class="form-checkbox">
+            <input type="checkbox" name="remember">
+            Запомнить меня
+          </label>
+          <button type="submit" class="btn btn--primary auth-form__submit">Войти</button>
+        </form>
+
+        <p class="auth-form__footer">
+          Нет аккаунта? <a href="register.html">Зарегистрироваться</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <img src="assets/images/logo.png" alt="ПроМастер" width="32" height="32">
+            ПроМастер
+          </div>
+          <p class="footer__desc">Игровая образовательная платформа для детей 8–14 лет. Учись, играй, становись мастером!</p>
+          <div class="footer__socials">
+            <a href="#" class="footer__social-link" aria-label="ВКонтакте">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14c5.6 0 6.93-1.33 6.93-6.93V8.93C22 3.33 20.67 2 15.07 2zm3.08 14.27h-1.46c-.55 0-.72-.44-1.71-1.44-.86-.84-1.24-.95-1.45-.95-.3 0-.38.08-.38.5v1.31c0 .36-.12.58-1.08.58-1.6 0-3.37-.97-4.62-2.77-1.88-2.58-2.4-4.52-2.4-4.65 0-.2.08-.38.5-.38h1.46c.37 0 .52.17.66.57.72 2.08 1.93 3.9 2.43 3.9.18 0 .27-.08.27-.53V9.53c-.06-.95-.55-1.03-.55-1.41 0-.17.14-.34.37-.34h2.3c.31 0 .42.17.42.53v2.87c0 .31.14.42.23.42.18 0 .33-.11.66-.44 1.02-1.14 1.75-2.9 1.75-2.9.1-.22.26-.38.63-.38h1.46c.44 0 .53.23.44.53-.18.84-1.93 3.28-1.93 3.28-.15.25-.21.36 0 .65.15.22.66.64 1 1.04.62.72 1.09 1.33 1.22 1.75.14.42-.08.63-.5.63z"/></svg>
+            </a>
+            <a href="#" class="footer__social-link" aria-label="Telegram">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+            </a>
+            <a href="#" class="footer__social-link" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.58 7.19a2.51 2.51 0 00-1.77-1.78C18.25 5 12 5 12 5s-6.25 0-7.81.41A2.51 2.51 0 002.42 7.19 26.3 26.3 0 002 12a26.3 26.3 0 00.42 4.81 2.51 2.51 0 001.77 1.78C5.75 19 12 19 12 19s6.25 0 7.81-.41a2.51 2.51 0 001.77-1.78A26.3 26.3 0 0022 12a26.3 26.3 0 00-.42-4.81zM10 15.5v-7l6 3.5-6 3.5z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__heading">Навигация</div>
+          <ul class="footer__links">
+            <li><a href="index.html#about" class="footer__link">О проекте</a></li>
+            <li><a href="index.html#stages" class="footer__link">Этапы</a></li>
+            <li><a href="index.html#awards" class="footer__link">Награды</a></li>
+            <li><a href="index.html#faq" class="footer__link">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__heading">Аккаунт</div>
+          <ul class="footer__links">
+            <li><a href="login.html" class="footer__link">Войти</a></li>
+            <li><a href="register.html" class="footer__link">Регистрация</a></li>
+            <li><a href="profile.html" class="footer__link">Профиль</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; 2026 ПроМастер. Все права защищены.
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/header.js"></script>
+</body>
+</html>
