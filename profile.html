@@ -41,28 +41,42 @@
   </header>
 
   <main class="profile-main">
-    <div class="container profile-header__inner">
-      <div class="profile-header__user">
-        <div class="profile-header__avatar">А</div>
-        <div>
-          <h1 class="profile-header__name">Алексей</h1>
-          <p class="profile-header__meta">Юный мастер · пройдено 4 из 6 этапов</p>
+    <section class="profile-section profile-section--info">
+      <div class="container">
+        <h2 class="profile-section__title">Мой профиль</h2>
+        <div class="profile-card">
+          <div class="profile-card__main">
+            <div class="profile-card__initial" aria-hidden="true">А</div>
+            <div class="profile-card__body">
+              <p class="profile-card__greeting">Здравствуйте, <span class="profile-card__name">Алексей</span>!</p>
+              <div class="profile-card__progress">
+                <div class="profile-card__progress-head">
+                  <span class="profile-card__progress-text">Пройдено 4/6 этапов</span>
+                  <span class="profile-card__progress-value">4 из 6</span>
+                </div>
+                <div class="profile-card__progress-bar" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="6" aria-label="Пройдено этапов">
+                  <div class="profile-card__progress-fill" style="width: 66.67%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a href="index.html#stages" class="btn btn--primary profile-card__btn">Продолжить обучение</a>
         </div>
       </div>
-      <a href="index.html#stages" class="btn btn--primary">Продолжить обучение</a>
-    </div>
+    </section>
 
-    <div class="container">
-      <div class="profile-section__header">
-        <h2 class="profile-section__title">Мои стикеры</h2>
-        <div class="profile-tabs">
-          <button class="profile-tab active" data-filter="all">Все</button>
-          <button class="profile-tab" data-filter="unlocked">Открытые</button>
-          <button class="profile-tab" data-filter="locked">Заблокированные</button>
+    <section class="profile-section">
+      <div class="container">
+        <div class="profile-section__header">
+          <h2 class="profile-section__title">Мои стикеры</h2>
+          <div class="profile-tabs">
+            <button class="profile-tab active" data-filter="all">Все</button>
+            <button class="profile-tab" data-filter="unlocked">Открытые</button>
+            <button class="profile-tab" data-filter="locked">Заблокированные</button>
+          </div>
         </div>
-      </div>
 
-      <div class="stickers-grid">
+        <div class="stickers-grid">
         <article class="my-sticker" data-color="#4ECC0A">
           <div class="my-sticker__image">1</div>
           <h3 class="my-sticker__name">Стартовый бейдж</h3>
@@ -122,6 +136,7 @@
         </article>
       </div>
     </div>
+    </section>
   </main>
 
   <footer class="footer">

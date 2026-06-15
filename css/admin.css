@@ -106,12 +106,12 @@
 
 .admin-content {
   flex: 1;
-  padding: var(--section-gap) var(--space-3);
+  padding: var(--space-3);
 }
 
 @media (min-width: 768px) {
   .admin-content {
-    padding: var(--section-gap) var(--space-4);
+    padding: var(--space-4);
   }
 }
 
