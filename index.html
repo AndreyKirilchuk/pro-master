@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <title>ПроМастер — Игровая образовательная платформа</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/landing.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="header__logo">
+        <img src="assets/logo.svg" alt="ПроМастер" class="header__logo-img" width="172" height="40">
+      </a>
+
+      <button class="burger" aria-label="Открыть меню">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="header__nav">
+        <ul class="header__nav-list">
+          <li><a href="#about" class="header__nav-link">О проекте</a></li>
+          <li><a href="#stages" class="header__nav-link">Этапы</a></li>
+          <li><a href="#awards" class="header__nav-link">Награды</a></li>
+          <li><a href="#faq" class="header__nav-link">FAQ</a></li>
+        </ul>
+        <div class="header__actions">
+          <a href="login.html" class="btn btn--primary">Войти</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__bg" aria-hidden="true">
+      <span class="hero__glow hero__glow--1"></span>
+      <span class="hero__glow hero__glow--2"></span>
+      <span class="hero__grid"></span>
+    </div>
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <span class="hero__label animate-fade-in-up">
+          <span class="hero__label-dot"></span>
+          Образование через игру
+        </span>
+        <h1 class="hero__title animate-fade-in-up animate-delay-1">
+          Стань настоящим
+          <span class="hero__title-accent">
+            ПроМастером!
+            <svg class="hero__underline" viewBox="0 0 320 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="none">
+              <path d="M5 15.5C72 6 158 4.5 230 9.5c30 2.1 60 5.5 85 11" stroke="url(#heroLine)" stroke-width="7" stroke-linecap="round"/>
+              <defs>
+                <linearGradient id="heroLine" x1="5" y1="12" x2="315" y2="12" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#5BDD12"/>
+                  <stop offset="1" stop-color="#2D8A06"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </span>
+        </h1>
+        <p class="hero__subtitle animate-fade-in-up animate-delay-2">Пройди 6 этапов рекламного агентства, выполняй задания в команде и собирай коллекцию наград-стикеров.</p>
+        <div class="hero__cta animate-fade-in-up animate-delay-3">
+          <a href="register.html" class="btn btn--primary btn--lg btn--shine">
+            Начать путь к мастерству
+            <svg class="btn__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#about" class="btn btn--outline-dark btn--lg">Узнать больше</a>
+        </div>
+        <div class="hero__trust animate-fade-in-up animate-delay-4">
+          <div class="hero__avatars">
+            <span class="hero__avatar" style="--i:0">М</span>
+            <span class="hero__avatar" style="--i:1">А</span>
+            <span class="hero__avatar" style="--i:2">К</span>
+            <span class="hero__avatar" style="--i:3">+</span>
+          </div>
+          <p class="hero__trust-text"><strong>2 000+</strong> юных мастеров уже играют</p>
+        </div>
+      </div>
+
+      <div class="hero__visual animate-fade-in-up animate-delay-3">
+        <div class="hero-game">
+          <!-- Главная игровая карточка профиля -->
+          <div class="hero-game__card">
+            <div class="hero-game__card-top">
+              <div class="hero-game__avatar">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <div class="hero-game__id">
+                <span class="hero-game__name">Твой профиль</span>
+                <span class="hero-game__role">Стажёр агентства</span>
+              </div>
+              <span class="hero-game__level">LVL 3</span>
+            </div>
+
+            <div class="hero-game__progress">
+              <div class="hero-game__progress-head">
+                <span>Прогресс этапа</span>
+                <span class="hero-game__progress-val">2 / 6</span>
+              </div>
+              <div class="hero-game__bar"><span class="hero-game__bar-fill"></span></div>
+            </div>
+
+            <div class="hero-game__quests">
+              <div class="hero-game__quest hero-game__quest--done">
+                <span class="hero-game__check">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                </span>
+                Первый слоган готов
+              </div>
+              <div class="hero-game__quest hero-game__quest--active">
+                <span class="hero-game__check hero-game__check--active"></span>
+                Дизайн-атака: логотип
+              </div>
+            </div>
+          </div>
+
+          <!-- Плавающие награды-стикеры -->
+          <div class="hero-game__sticker hero-game__sticker--a" style="--rot:-8deg">
+            <svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="160" height="160" rx="28" fill="#fff"/>
+              <circle cx="80" cy="72" r="40" fill="#4ECC0A"/>
+              <text x="80" y="82" text-anchor="middle" fill="#fff" font-size="34" font-weight="800">1</text>
+              <rect x="48" y="122" width="64" height="14" rx="7" fill="#1A1A1A"/>
+            </svg>
+          </div>
+          <div class="hero-game__sticker hero-game__sticker--b" style="--rot:7deg">
+            <svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="160" height="160" rx="28" fill="#fff"/>
+              <path d="M80 30l13 26 28 4-20 20 5 28-26-13-26 13 5-28-20-20 28-4z" fill="#4ECC0A"/>
+              <circle cx="80" cy="84" r="18" fill="#1A1A1A"/>
+              <path d="M73 84l5 5 9-9" stroke="#4ECC0A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="hero-game__chip hero-game__chip--xp" style="--rot:5deg">
+            <span class="hero-game__chip-spark">✦</span> +120 XP
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section about" id="about">
+    <div class="container about__inner">
+      <div class="section__header section__header--center about__header">
+        <span class="eyebrow" data-reveal>
+          <span class="eyebrow__dot"></span>
+          О проекте
+        </span>
+        <h2 class="about__title" data-reveal>Что такое <span class="text-accent">ПроМастер</span>?</h2>
+        <p class="about__text" data-reveal>ПроМастер — интерактивная игровая платформа для детей 8–14 лет. Ты попадаешь в рекламное агентство и проходишь путь от новичка до настоящего профи. Каждый этап — новые навыки, командные задачи и уникальная награда в коллекцию.</p>
+      </div>
+      <div class="about__stats">
+        <div class="about__stat" data-reveal>
+          <span class="about__stat-value" data-count="50" data-suffix="+">0</span>
+          <span class="about__stat-label">заданий</span>
+        </div>
+        <div class="about__stat" data-reveal style="--d:1">
+          <span class="about__stat-value" data-count="6">0</span>
+          <span class="about__stat-label">наград</span>
+        </div>
+        <div class="about__stat" data-reveal style="--d:2">
+          <span class="about__stat-value">8–14</span>
+          <span class="about__stat-label">лет</span>
+        </div>
+        <div class="about__stat" data-reveal style="--d:3">
+          <span class="about__stat-value" data-count="100" data-suffix="%">0</span>
+          <span class="about__stat-label">игра</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stages -->
+  <section class="section" id="stages">
+    <div class="container">
+      <div class="section__header section__header--center">
+        <span class="eyebrow" data-reveal>
+          <span class="eyebrow__dot"></span>
+          Путь игрока
+        </span>
+        <h2 class="section__title" data-reveal>Шесть этапов до мастера</h2>
+        <p class="section__subtitle" data-reveal>От первого дня в агентстве до финальной защиты проекта — каждый этап открывает новый навык и награду</p>
+      </div>
+
+      <div class="stages__grid">
+        <article class="stage-card" data-reveal style="--d:0">
+          <div class="stage-card__head">
+            <span class="stage-card__number">1</span>
+            <h3 class="stage-card__title">Первый день в компании</h3>
+          </div>
+          <p class="stage-card__text">Знакомство с командой, выбор направления и создание первого простого слогана для клиента.</p>
+          <span class="stage-card__reward">+ Пропуск в эфир</span>
+        </article>
+        <article class="stage-card" data-reveal style="--d:1">
+          <div class="stage-card__head">
+            <span class="stage-card__number">2</span>
+            <h3 class="stage-card__title">Дизайн-Атака</h3>
+          </div>
+          <p class="stage-card__text">Разработка логотипа и визуальной концепции рекламной кампании.</p>
+          <span class="stage-card__reward">+ Мастер пикселей</span>
+        </article>
+        <article class="stage-card" data-reveal style="--d:2">
+          <div class="stage-card__head">
+            <span class="stage-card__number">3</span>
+            <h3 class="stage-card__title">SMM-Челлендж</h3>
+          </div>
+          <p class="stage-card__text">Создание контент-плана и подбор визуалов для социальных сетей.</p>
+          <span class="stage-card__reward">+ Звезда охватов</span>
+        </article>
+        <article class="stage-card" data-reveal style="--d:3">
+          <div class="stage-card__head">
+            <span class="stage-card__number">4</span>
+            <h3 class="stage-card__title">IT-Мастер</h3>
+          </div>
+          <p class="stage-card__text">Решение технических задач: вёрстка landing page или простой интерактивный элемент.</p>
+          <span class="stage-card__reward">+ Кодовый гений</span>
+        </article>
+        <article class="stage-card" data-reveal style="--d:4">
+          <div class="stage-card__head">
+            <span class="stage-card__number">5</span>
+            <h3 class="stage-card__title">Командная защита</h3>
+          </div>
+          <p class="stage-card__text">Подготовка и презентация идеи заказчику — командный этап.</p>
+          <span class="stage-card__reward">+ Король слова</span>
+        </article>
+        <article class="stage-card stage-card--final" data-reveal style="--d:5">
+          <div class="stage-card__head">
+            <span class="stage-card__number">6</span>
+            <h3 class="stage-card__title">Вершина мастерства</h3>
+          </div>
+          <p class="stage-card__text">Комплексная рекламная кампания и защита проекта перед руководством компании.</p>
+          <span class="stage-card__reward">+ Легенда агентства</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Awards slider -->
+  <section class="section awards" id="awards">
+    <div class="container">
+      <div class="section__header section__header--center">
+        <span class="eyebrow" data-reveal>
+          <span class="eyebrow__dot"></span>
+          Коллекция
+        </span>
+        <h2 class="section__title" data-reveal>Награды за каждый этап</h2>
+        <p class="section__subtitle" data-reveal>За каждый пройденный этап ты получаешь уникальный стикер-награду в свою коллекцию</p>
+      </div>
+
+      <div class="awards__frame">
+        <div class="awards__slider">
+          <div class="awards__track">
+          <div class="award-slide">
+            <div class="award-slide__sticker">
+              <svg class="award-slide__image" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect width="160" height="160" rx="12" fill="#1A1A1A"/>
+                <circle cx="80" cy="72" r="40" fill="#4ECC0A"/>
+                <text x="80" y="80" text-anchor="middle" fill="#fff" font-size="28" font-weight="700">1</text>
+                <rect x="48" y="120" width="64" height="20" rx="4" fill="#1A1A1A"/>
+              </svg>
+            </div>
+            <div class="award-slide__content">
+              <span class="award-slide__label">Этап 1</span>
+              <h3 class="award-slide__title">Пропуск в эфир</h3>
+              <p class="award-slide__desc">Награда за «Первый день в компании»: ты познакомился с командой, выбрал направление и создал свой первый слоган.</p>
+            </div>
+          </div>
+          <div class="award-slide">
+            <div class="award-slide__sticker">
+              <svg class="award-slide__image" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect width="160" height="160" rx="12" fill="#1A1A1A"/>
+                <rect x="32" y="32" width="96" height="96" rx="8" fill="#38A808"/>
+                <circle cx="56" cy="56" r="12" fill="#fff"/>
+                <circle cx="104" cy="88" r="16" fill="#4ECC0A"/>
+                <rect x="48" y="120" width="64" height="8" rx="4" fill="#1A1A1A"/>
+              </svg>
+            </div>
+            <div class="award-slide__content">
+              <span class="award-slide__label">Этап 2</span>
+              <h3 class="award-slide__title">Мастер пикселей</h3>
+              <p class="award-slide__desc">Награда за «Дизайн-Атаку»: логотип готов, визуальная концепция кампании собрана — ты настоящий дизайнер!</p>
+            </div>
+          </div>
+          <div class="award-slide">
+            <div class="award-slide__sticker">
+              <svg class="award-slide__image" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect width="160" height="160" rx="12" fill="#1A1A1A"/>
+                <rect x="36" y="40" width="88" height="72" rx="8" fill="#1A1A1A"/>
+                <rect x="48" y="52" width="64" height="8" rx="2" fill="#4ECC0A"/>
+                <rect x="48" y="68" width="48" height="6" rx="2" fill="#38A808"/>
+                <rect x="48" y="82" width="56" height="6" rx="2" fill="#38A808"/>
+              </svg>
+            </div>
+            <div class="award-slide__content">
+              <span class="award-slide__label">Этап 3</span>
+              <h3 class="award-slide__title">Звезда охватов</h3>
+              <p class="award-slide__desc">Награда за «SMM-Челлендж»: контент-план составлен, визуалы подобраны — соцсети клиента в надёжных руках.</p>
+            </div>
+          </div>
+          <div class="award-slide">
+            <div class="award-slide__sticker">
+              <svg class="award-slide__image" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect width="160" height="160" rx="12" fill="#1A1A1A"/>
+                <rect x="32" y="36" width="96" height="64" rx="6" fill="#2D8A06"/>
+                <rect x="40" y="44" width="80" height="48" rx="4" fill="#fff"/>
+                <path d="M52 60h56M52 72h40M52 84h48" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="award-slide__content">
+              <span class="award-slide__label">Этап 4</span>
+              <h3 class="award-slide__title">Кодовый гений</h3>
+              <p class="award-slide__desc">Награда за «IT-Мастер»: landing page свёрстан или интерактив работает — техническая задача выполнена на отлично.</p>
+            </div>
+          </div>
+          <div class="award-slide">
+            <div class="award-slide__sticker">
+              <svg class="award-slide__image" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect width="160" height="160" rx="12" fill="#1A1A1A"/>
+                <rect x="56" y="48" width="48" height="64" rx="6" fill="#2D8A06"/>
+                <circle cx="80" cy="36" r="20" fill="#4ECC0A"/>
+                <rect x="64" y="100" width="32" height="4" rx="2" fill="#fff"/>
+              </svg>
+            </div>
+            <div class="award-slide__content">
+              <span class="award-slide__label">Этап 5</span>
+              <h3 class="award-slide__title">Король слова</h3>
+              <p class="award-slide__desc">Награда за «Командную защиту»: идея представлена заказчику уверенно и убедительно — команда гордится тобой!</p>
+            </div>
+          </div>
+          <div class="award-slide">
+            <div class="award-slide__sticker">
+              <svg class="award-slide__image" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect width="160" height="160" rx="12" fill="#1A1A1A"/>
+                <path d="M80 28l12 24 26 4-19 18 4 26-23-12-23 12 4-26-19-18 26-4z" fill="#4ECC0A"/>
+                <circle cx="80" cy="80" r="20" fill="#1A1A1A"/>
+                <path d="M74 80l4 4 8-8" stroke="#4ECC0A" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="award-slide__content">
+              <span class="award-slide__label">Этап 6</span>
+              <h3 class="award-slide__title">Легенда агентства</h3>
+              <p class="award-slide__desc">Главная награда за «Вершину мастерства»: комплексная кампания защищена — ты настоящий профи агентства!</p>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div class="awards__controls">
+          <button class="awards__btn awards__btn--prev" aria-label="Предыдущая награда">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <div class="awards__dots">
+            <button class="awards__dot active" aria-label="Награда 1"></button>
+            <button class="awards__dot" aria-label="Награда 2"></button>
+            <button class="awards__dot" aria-label="Награда 3"></button>
+            <button class="awards__dot" aria-label="Награда 4"></button>
+            <button class="awards__dot" aria-label="Награда 5"></button>
+            <button class="awards__dot" aria-label="Награда 6"></button>
+          </div>
+          <button class="awards__btn awards__btn--next" aria-label="Следующая награда">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section__header section__header--center">
+        <span class="eyebrow" data-reveal>
+          <span class="eyebrow__dot"></span>
+          FAQ
+        </span>
+        <h2 class="section__title" data-reveal>Частые вопросы</h2>
+        <p class="section__subtitle" data-reveal>Ответы на популярные вопросы о платформе</p>
+      </div>
+      <div class="faq__list">
+        <div class="faq__item">
+          <button class="faq__question">
+            Для какого возраста подходит платформа?
+            <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">ПроМастер разработан для детей от 8 до 14 лет. Задания адаптированы под разный уровень сложности.</div>
+          </div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__question">
+            Нужно ли платить за использование?
+            <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">Базовый доступ бесплатный — все 6 этапов и награды доступны без оплаты. Дополнительные материалы могут быть платными.</div>
+          </div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__question">
+            Можно ли играть с друзьями?
+            <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">Да! Вы можете соревноваться с друзьями, сравнивать коллекции наград и проходить этапы вместе.</div>
+          </div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__question">
+            Как получить все награды?
+            <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">Пройдите все 6 этапов и выполните финальное задание. За каждый этап вы получаете уникальную награду-стикер.</div>
+          </div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__question">
+            Безопасна ли платформа для детей?
+            <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">Абсолютно. Мы не собираем лишних данных, весь контент проверен педагогами, а общение модерируется.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer footer--landing">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">
+            <img src="assets/logo.svg" alt="ПроМастер" class="footer__logo-img" width="138" height="32">
+          </a>
+          <p class="footer__desc">Игровая образовательная платформа для детей 8–14 лет. Учись, играй, становись мастером!</p>
+          <div class="footer__socials">
+            <a href="#" class="footer__social-link" aria-label="ВКонтакте">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14c5.6 0 6.93-1.33 6.93-6.93V8.93C22 3.33 20.67 2 15.07 2zm3.08 14.27h-1.46c-.55 0-.72-.44-1.71-1.44-.86-.84-1.24-.95-1.45-.95-.3 0-.38.08-.38.5v1.31c0 .36-.12.58-1.08.58-1.6 0-3.37-.97-4.62-2.77-1.88-2.58-2.4-4.52-2.4-4.65 0-.2.08-.38.5-.38h1.46c.37 0 .52.17.66.57.72 2.08 1.93 3.9 2.43 3.9.18 0 .27-.08.27-.53V9.53c-.06-.95-.55-1.03-.55-1.41 0-.17.14-.34.37-.34h2.3c.31 0 .42.17.42.53v2.87c0 .31.14.42.23.42.18 0 .33-.11.66-.44 1.02-1.14 1.75-2.9 1.75-2.9.1-.22.26-.38.63-.38h1.46c.44 0 .53.23.44.53-.18.84-1.93 3.28-1.93 3.28-.15.25-.21.36 0 .65.15.22.66.64 1 1.04.62.72 1.09 1.33 1.22 1.75.14.42-.08.63-.5.63z"/></svg>
+            </a>
+            <a href="#" class="footer__social-link" aria-label="Telegram">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <div class="footer__heading">Навигация</div>
+          <ul class="footer__links">
+            <li><a href="index.html#about" class="footer__link">О проекте</a></li>
+            <li><a href="index.html#stages" class="footer__link">Этапы</a></li>
+            <li><a href="index.html#awards" class="footer__link">Награды</a></li>
+            <li><a href="index.html#faq" class="footer__link">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <div class="footer__heading">Аккаунт</div>
+          <ul class="footer__links">
+            <li><a href="login.html" class="footer__link">Войти</a></li>
+            <li><a href="register.html" class="footer__link">Регистрация</a></li>
+            <li><a href="profile.html" class="footer__link">Профиль</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; 2026 ПроМастер. Все права защищены.
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/header.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
