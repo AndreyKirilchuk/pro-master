@@ -537,3 +537,11 @@
   font-size: var(--font-size-xs);
   color: var(--text-muted);
 }
+
+.footer__bottom p {
+  margin: 0;
+}
+
+.footer__author {
+  margin-top: 6px;
+}
