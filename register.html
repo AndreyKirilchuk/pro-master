@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
   <title>Регистрация — ПроМастер</title>
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
@@ -15,7 +15,7 @@
   <header class="header">
     <div class="container header__inner">
       <a href="index.html" class="header__logo">
-        <img src="assets/logo.svg" alt="ПроМастер" class="header__logo-img" width="172" height="40">
+        <img src="assets/images/logo.svg" alt="ПроМастер" class="header__logo-img" width="172" height="40">
       </a>
       <button class="burger" aria-label="Открыть меню"><span></span><span></span><span></span></button>
       <nav class="header__nav">
@@ -88,22 +88,11 @@
       <div class="footer__inner">
         <div class="footer__brand">
           <a href="index.html" class="footer__logo">
-            <img src="assets/logo.svg" alt="ПроМастер" class="footer__logo-img" width="138" height="32">
+            <img src="assets/images/logo.svg" alt="ПроМастер" class="footer__logo-img" width="138" height="32">
           </a>
           <p class="footer__desc">Игровая образовательная платформа для детей 8–14 лет. Учись, играй, становись мастером!</p>
-          <div class="footer__socials">
-            <a href="#" class="footer__social-link" aria-label="ВКонтакте">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14c5.6 0 6.93-1.33 6.93-6.93V8.93C22 3.33 20.67 2 15.07 2zm3.08 14.27h-1.46c-.55 0-.72-.44-1.71-1.44-.86-.84-1.24-.95-1.45-.95-.3 0-.38.08-.38.5v1.31c0 .36-.12.58-1.08.58-1.6 0-3.37-.97-4.62-2.77-1.88-2.58-2.4-4.52-2.4-4.65 0-.2.08-.38.5-.38h1.46c.37 0 .52.17.66.57.72 2.08 1.93 3.9 2.43 3.9.18 0 .27-.08.27-.53V9.53c-.06-.95-.55-1.03-.55-1.41 0-.17.14-.34.37-.34h2.3c.31 0 .42.17.42.53v2.87c0 .31.14.42.23.42.18 0 .33-.11.66-.44 1.02-1.14 1.75-2.9 1.75-2.9.1-.22.26-.38.63-.38h1.46c.44 0 .53.23.44.53-.18.84-1.93 3.28-1.93 3.28-.15.25-.21.36 0 .65.15.22.66.64 1 1.04.62.72 1.09 1.33 1.22 1.75.14.42-.08.63-.5.63z"/></svg>
-            </a>
-            <a href="#" class="footer__social-link" aria-label="Telegram">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
-            </a>
-            <a href="#" class="footer__social-link" aria-label="YouTube">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.58 7.19a2.51 2.51 0 00-1.77-1.78C18.25 5 12 5 12 5s-6.25 0-7.81.41A2.51 2.51 0 002.42 7.19 26.3 26.3 0 002 12a26.3 26.3 0 00.42 4.81 2.51 2.51 0 001.77 1.78C5.75 19 12 19 12 19s6.25 0 7.81-.41a2.51 2.51 0 001.77-1.78A26.3 26.3 0 0022 12a26.3 26.3 0 00-.42-4.81zM10 15.5v-7l6 3.5-6 3.5z"/></svg>
-            </a>
-          </div>
         </div>
-        <div>
+        <div class="footer__col">
           <div class="footer__heading">Навигация</div>
           <ul class="footer__links">
             <li><a href="index.html#about" class="footer__link">О проекте</a></li>
@@ -112,12 +101,20 @@
             <li><a href="index.html#faq" class="footer__link">FAQ</a></li>
           </ul>
         </div>
-        <div>
+        <div class="footer__col">
           <div class="footer__heading">Аккаунт</div>
           <ul class="footer__links">
             <li><a href="login.html" class="footer__link">Войти</a></li>
             <li><a href="register.html" class="footer__link">Регистрация</a></li>
             <li><a href="profile.html" class="footer__link">Профиль</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <div class="footer__heading">Контакты</div>
+          <ul class="footer__links footer__contacts">
+            <li><a href="tel:+78001234567" class="footer__link">+7 (800) 123-45-67</a></li>
+            <li><a href="mailto:info@promaster.ru" class="footer__link">info@promaster.ru</a></li>
+            <li><a href="#" class="footer__link">ВКонтакте</a></li>
           </ul>
         </div>
       </div>

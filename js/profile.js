@@ -22,7 +22,7 @@
       ctx.fillRect(40, 40, 320, 320);
 
       ctx.fillStyle = textColor;
-      ctx.font = '700 120px Outfit, Inter, system-ui, sans-serif';
+      ctx.font = '700 120px Onest, Inter, system-ui, sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText(label, size / 2, size / 2);

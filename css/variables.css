@@ -57,7 +57,7 @@
 
   /* Typography */
   --font-family-body: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-family-heading: 'Outfit', 'Inter', system-ui, sans-serif;
+  --font-family-heading: 'Onest', 'Inter', system-ui, sans-serif;
   --font-family: var(--font-family-body);
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;

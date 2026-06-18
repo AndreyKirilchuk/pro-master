@@ -2,14 +2,27 @@
   'use strict';
 
   const sidebar = document.querySelector('.admin-sidebar');
+  const overlay = document.querySelector('.admin-overlay');
+  const burger = document.querySelector('.admin-burger');
 
   function closeSidebar() {
     if (sidebar) sidebar.classList.remove('open');
-    const overlay = document.querySelector('.admin-overlay');
     if (overlay) overlay.classList.remove('active');
-    const burger = document.querySelector('.burger');
     if (burger) burger.classList.remove('active');
     document.body.style.overflow = '';
+  }
+
+  if (burger && sidebar) {
+    burger.addEventListener('click', function () {
+      sidebar.classList.toggle('open');
+      if (overlay) overlay.classList.toggle('active');
+      burger.classList.toggle('active');
+      document.body.style.overflow = sidebar.classList.contains('open') ? 'hidden' : '';
+    });
+  }
+
+  if (overlay) {
+    overlay.addEventListener('click', closeSidebar);
   }
 
   /* Tab switching */
