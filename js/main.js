@@ -29,11 +29,7 @@
       dot.addEventListener('click', function () { goToSlide(i); });
     });
 
-    if (config.autoplay) {
-      setInterval(function () {
-        goToSlide(currentSlide + 1);
-      }, config.autoplay);
-    }
+
   }
 
   document.querySelectorAll('.faq__question').forEach(function (btn) {
