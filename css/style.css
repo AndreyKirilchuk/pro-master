@@ -2003,7 +2003,7 @@ h4 { font-size: var(--font-size-xl); }
 /* Profile вЂ” minimal, aligned with landing */
 
 .profile-main {
-  background-color: var(--bg-card);
+  background-color: #111111;
 }
 
 .profile-section {
@@ -2645,9 +2645,13 @@ h4 { font-size: var(--font-size-xl); }
   color: var(--color-admin-green);
 }
 
-.admin-sidebar__logo svg {
+.admin-sidebar__logo svg,
+.admin-sidebar__logo-img {
   width: 32px;
   height: 32px;
+  flex-shrink: 0;
+  display: block;
+  object-fit: contain;
 }
 
 .admin-sidebar__nav {
