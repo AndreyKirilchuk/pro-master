@@ -15,7 +15,12 @@
         <img src="assets/images/logo.svg" alt="ПроМастер" class="header__logo-img" width="172" height="40">
       </a>
       <button class="burger" aria-label="Открыть меню"><span></span><span></span><span></span></button>
-      <nav class="header__nav">
+    </div>
+  </header>
+
+  <div class="header-nav-overlay" aria-hidden="true"></div>
+
+  <nav class="header__nav">
         <ul class="header__nav-list">
           <li><a href="index.html#about" class="header__nav-link">О проекте</a></li>
           <li><a href="index.html#stages" class="header__nav-link">Этапы</a></li>
@@ -23,15 +28,14 @@
           <li><a href="index.html#faq" class="header__nav-link">FAQ</a></li>
         </ul>
         <div class="header__actions">
-          <a href="profile.html" class="header__profile active">
+          <a href="profile.html" class="header__profile active" aria-current="page">
             <span class="header__profile-avatar">А</span>
             <span class="header__profile-name">Алексей</span>
           </a>
+          <a href="profile.html" class="btn btn--primary header__profile-btn" aria-current="page">Профиль</a>
           <a href="index.html" class="btn btn--outline btn--sm">Выйти</a>
         </div>
       </nav>
-    </div>
-  </header>
 
   <main class="profile-main">
     <section class="profile-section profile-section--info">

@@ -990,6 +990,10 @@ h4 { font-size: var(--font-size-xl); }
   font-size: var(--font-size-sm);
 }
 
+.header__profile-btn {
+  display: none;
+}
+
 @media (max-width: 1023px) {
   .header__profile-name {
     display: none;
@@ -1013,20 +1017,40 @@ h4 { font-size: var(--font-size-xl); }
 }
 
 @media (max-width: 1023px) {
+  .header {
+    backdrop-filter: none;
+  }
+
+  .header-nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    top: var(--header-height);
+    background-color: var(--overlay);
+    z-index: 100;
+  }
+
+  .header-nav-overlay.active {
+    display: block;
+  }
+
   .header__nav {
     position: fixed;
     top: var(--header-height);
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--bg-card);
+    background-color: #111111;
+    border-top: 1px solid var(--border-color);
     flex-direction: column;
     justify-content: flex-start;
     padding: var(--space-4) var(--space-2);
     gap: var(--space-4);
     transform: translateX(100%);
     transition: transform 0.3s ease;
-    z-index: 99;
+    z-index: 101;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .header__nav.open {
@@ -1044,7 +1068,7 @@ h4 { font-size: var(--font-size-xl); }
     display: block;
     padding: var(--space-2);
     font-size: var(--font-size-lg);
-    text-align: center;
+    text-align: left;
   }
 
   .header__actions {
@@ -1052,10 +1076,23 @@ h4 { font-size: var(--font-size-xl); }
     width: 100%;
   }
 
-  .header__actions .btn,
-  .header__actions .header__profile {
+  .header__actions .btn {
     width: 100%;
     justify-content: center;
+  }
+
+  .header__actions .btn--sm {
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--font-size-base);
+    min-height: 44px;
+  }
+
+  .header__actions .header__profile {
+    display: none;
+  }
+
+  .header__profile-btn {
+    display: inline-flex;
   }
 }
 
@@ -1265,6 +1302,19 @@ h4 { font-size: var(--font-size-xl); }
   flex-wrap: wrap;
   gap: var(--space-2);
   justify-content: center;
+}
+
+@media (max-width: 580px) {
+  .hero__cta {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .hero__cta .btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 @media (min-width: 768px) {

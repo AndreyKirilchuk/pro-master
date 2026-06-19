@@ -3,9 +3,17 @@
 
   const burger = document.querySelector('.burger');
   const nav = document.querySelector('.header__nav');
+  const overlay = document.querySelector('.header-nav-overlay');
   const isAdminPage = document.body.classList.contains('admin-page');
   const adminSidebar = document.querySelector('.admin-sidebar');
   const adminOverlay = document.querySelector('.admin-overlay');
+
+  function closeNav() {
+    if (burger) burger.classList.remove('active');
+    if (nav) nav.classList.remove('open');
+    if (overlay) overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
 
   function closeAdminSidebar() {
     if (adminSidebar) adminSidebar.classList.remove('open');
@@ -27,6 +35,7 @@
       if (nav) {
         burger.classList.toggle('active');
         nav.classList.toggle('open');
+        if (overlay) overlay.classList.toggle('active', nav.classList.contains('open'));
         document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
       }
     });
@@ -34,12 +43,12 @@
 
   if (nav && !isAdminPage) {
     nav.querySelectorAll('.header__nav-link').forEach(function (link) {
-      link.addEventListener('click', function () {
-        burger.classList.remove('active');
-        nav.classList.remove('open');
-        document.body.style.overflow = '';
-      });
+      link.addEventListener('click', closeNav);
     });
+  }
+
+  if (overlay) {
+    overlay.addEventListener('click', closeNav);
   }
 
   if (adminOverlay) {
