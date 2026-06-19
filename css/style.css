@@ -1,8 +1,7 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Onest:wght@600;700;800&display=swap');
 
-/* ===== variables.css ===== */
+/* Переменные */
 :root {
-  /* Brand — inspired by pro.firpo.ru */
   --color-primary: #4ECC0A;
   --color-primary-dark: #38A808;
   --color-primary-darker: #2D8A06;
@@ -14,7 +13,6 @@
   --color-dark-soft: #2B2B2B;
   --color-dark-muted: #3D3D3D;
 
-  /* Legacy aliases */
   --color-green: #4ECC0A;
   --color-accent: #2D8A06;
   --color-accent-hover: #1F6B04;
@@ -22,7 +20,6 @@
 
   --color-admin-green: #4ECC0A;
 
-  /* Theme */
   --bg-body: #111111;
   --bg-card: #1A1A1A;
   --bg-hero: linear-gradient(135deg, #111111 0%, #1A1A1A 50%, #142810 100%);
@@ -41,7 +38,6 @@
   --header-bg: #1A1A1A;
   --overlay: rgba(26, 26, 26, 0.55);
 
-  /* Spacing (8px grid) */
   --space-1: 8px;
   --space-2: 16px;
   --space-3: 24px;
@@ -52,13 +48,11 @@
   --space-10: 80px;
   --section-gap: 120px;
 
-  /* Border radius */
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
   --radius-full: 9999px;
 
-  /* Typography */
   --font-family-body: 'Manrope', system-ui, -apple-system, sans-serif;
   --font-family-heading: 'Onest', 'Manrope', system-ui, sans-serif;
   --font-family: var(--font-family-body);
@@ -72,16 +66,14 @@
   --font-size-4xl: 2.5rem;
   --font-size-5xl: 3rem;
 
-  /* Transitions */
   --transition: all 0.3s ease;
 
-  /* Layout */
   --container-max: 1440px;
   --header-height: 72px;
   --sidebar-width: 260px;
 }
 
-/* ===== base.css ===== */
+/* Базовые стили */
 
 *,
 *::before,
@@ -265,7 +257,6 @@ h4 { font-size: var(--font-size-xl); }
 .animate-delay-3 { animation-delay: 0.45s; opacity: 0; }
 .animate-delay-4 { animation-delay: 0.6s; opacity: 0; }
 
-/* Section header centering helper */
 .section__header--center {
   display: flex;
   flex-direction: column;
@@ -273,7 +264,6 @@ h4 { font-size: var(--font-size-xl); }
   text-align: center;
 }
 
-/* Eyebrow label вЂ” reused across sections for rhythm */
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -297,12 +287,10 @@ h4 { font-size: var(--font-size-xl); }
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-primary) 18%, transparent);
 }
 
-/* Brand accent text */
 .text-accent {
   color: var(--color-primary-dark);
 }
 
-/* Scroll reveal */
 [data-reveal] {
   opacity: 0;
   transform: translateY(22px);
@@ -333,8 +321,9 @@ h4 { font-size: var(--font-size-xl); }
   }
 }
 
-/* ===== components.css ===== */
-/* Buttons */
+/* Компоненты */
+
+/* Кнопки */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -425,7 +414,6 @@ h4 { font-size: var(--font-size-xl); }
   border-radius: var(--radius-md);
 }
 
-/* Arrow micro-interaction */
 .btn__arrow {
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -434,7 +422,6 @@ h4 { font-size: var(--font-size-xl); }
   transform: translateX(4px);
 }
 
-/* Primary CTA: lift + brand glow + light sweep */
 .btn--primary.btn--lg {
   position: relative;
   overflow: hidden;
@@ -482,7 +469,7 @@ h4 { font-size: var(--font-size-xl); }
   color: var(--text-on-primary);
 }
 
-/* Cards */
+/* Карточки */
 .card {
   background-color: var(--bg-card);
   border-radius: var(--radius-md);
@@ -497,7 +484,7 @@ h4 { font-size: var(--font-size-xl); }
   box-shadow: var(--shadow-md);
 }
 
-/* Form elements */
+/* Формы */
 .form-group {
   margin-bottom: var(--space-2);
 }
@@ -536,7 +523,7 @@ h4 { font-size: var(--font-size-xl); }
   color: var(--text-muted);
 }
 
-/* Badge */
+/* Бейджи */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -567,7 +554,7 @@ h4 { font-size: var(--font-size-xl); }
   color: var(--color-admin-green);
 }
 
-/* Modal */
+/* Модальное окно */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -627,7 +614,7 @@ h4 { font-size: var(--font-size-xl); }
   padding-right: var(--space-5);
 }
 
-/* File upload zone */
+/* Загрузка файлов */
 .file-upload {
   border: 2px dashed var(--border-color);
   border-radius: var(--radius-md);
@@ -659,7 +646,7 @@ h4 { font-size: var(--font-size-xl); }
   color: var(--text-secondary);
 }
 
-/* Table */
+/* Таблицы */
 .table-wrapper {
   overflow-x: auto;
   border-radius: var(--radius-md);
@@ -760,7 +747,7 @@ h4 { font-size: var(--font-size-xl); }
   }
 }
 
-/* Burger */
+/* Бургер */
 .burger {
   display: none;
   flex-direction: column;
@@ -800,7 +787,7 @@ h4 { font-size: var(--font-size-xl); }
   }
 }
 
-/* Footer */
+/* Подвал */
 .footer {
   padding: var(--space-8) 0 var(--space-4);
   background-color: var(--bg-dark-section);
@@ -911,8 +898,7 @@ h4 { font-size: var(--font-size-xl); }
   margin-top: 6px;
 }
 
-/* ===== header.css ===== */
-/* Unified site header */
+/* Шапка */
 .header {
   position: fixed;
   top: 0;
@@ -1132,10 +1118,8 @@ h4 { font-size: var(--font-size-xl); }
   }
 }
 
-/* ===== landing.css ===== */
-/* Landing вЂ” minimal product style */
+/* Главная */
 
-/* Softer hero animations */
 .hero .animate-fade-in-up {
   animation: landingFadeIn 0.55s ease forwards;
 }
@@ -1156,7 +1140,7 @@ h4 { font-size: var(--font-size-xl); }
   }
 }
 
-/* Hero */
+/* Главный экран */
 .hero {
   position: relative;
   overflow: hidden;
@@ -1173,7 +1157,6 @@ h4 { font-size: var(--font-size-xl); }
   }
 }
 
-/* Layered depth background */
 .hero__bg {
   position: absolute;
   inset: 0;
@@ -1359,7 +1342,6 @@ h4 { font-size: var(--font-size-xl); }
   }
 }
 
-/* Trust row */
 .hero__trust {
   display: flex;
   align-items: center;
@@ -1412,7 +1394,6 @@ h4 { font-size: var(--font-size-xl); }
   font-weight: 700;
 }
 
-/* Hero visual — sticker showcase */
 .hero__visual {
   position: relative;
   width: 100%;
@@ -1617,7 +1598,7 @@ h4 { font-size: var(--font-size-xl); }
   }
 }
 
-/* About */
+/* О проекте */
 .about {
   background-color: var(--bg-card);
   border-bottom: 1px solid var(--border-color);
@@ -1709,7 +1690,7 @@ h4 { font-size: var(--font-size-xl); }
   color: #B0B0B0;
 }
 
-/* Stages */
+/* Этапы */
 #stages {
   background-color: var(--bg-body);
 }
@@ -1750,7 +1731,6 @@ h4 { font-size: var(--font-size-xl); }
   overflow: hidden;
 }
 
-/* glow that grows from the number on hover */
 .stage-card::before {
   content: '';
   position: absolute;
@@ -1826,14 +1806,13 @@ h4 { font-size: var(--font-size-xl); }
   letter-spacing: 0.01em;
 }
 
-/* Final stage gets a premium accent */
 .stage-card--final {
   border-color: color-mix(in srgb, var(--color-primary) 35%, transparent);
   background:
     linear-gradient(180deg, var(--color-primary-light) 0%, var(--bg-card) 45%);
 }
 
-/* Awards slider */
+/* Награды */
 .awards {
   background-color: var(--bg-card);
 }
@@ -2142,8 +2121,7 @@ h4 { font-size: var(--font-size-xl); }
   line-height: 1.7;
 }
 
-/* ===== profile.css ===== */
-/* Profile вЂ” minimal, aligned with landing */
+/* Профиль */
 
 .profile-main {
   background-color: #111111;
@@ -2165,7 +2143,6 @@ h4 { font-size: var(--font-size-xl); }
   margin-bottom: var(--space-5);
 }
 
-/* Profile card */
 .profile-section--info .profile-section__title {
   margin-bottom: var(--space-5);
 }
@@ -2184,7 +2161,6 @@ h4 { font-size: var(--font-size-xl); }
   animation: profileRise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* soft brand glow tucked behind the avatar */
 .profile-card::before {
   content: '';
   position: absolute;
@@ -2288,7 +2264,6 @@ h4 { font-size: var(--font-size-xl); }
   animation: profileFill 1.3s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
 }
 
-/* travelling shine on the fill */
 .profile-card__progress-fill::after {
   content: '';
   position: absolute;
@@ -2444,7 +2419,6 @@ h4 { font-size: var(--font-size-xl); }
   border: 1px solid var(--border-dark);
   border-radius: var(--radius-lg);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  /* backwards: shows the start frame during the stagger delay */
   animation: profileRise 0.6s cubic-bezier(0.22, 1, 0.36, 1) backwards;
   animation-delay: calc(var(--i, 0) * 65ms);
 }
@@ -2576,7 +2550,7 @@ h4 { font-size: var(--font-size-xl); }
   display: none;
 }
 
-/* ===== auth.css ===== */
+/* Авторизация */
 .auth-page {
   min-height: calc(100vh - var(--header-height));
   display: flex;
@@ -2750,7 +2724,7 @@ h4 { font-size: var(--font-size-xl); }
   accent-color: var(--color-primary);
 }
 
-/* ===== admin.css ===== */
+/* Админ-панель */
 .admin-layout {
   display: flex;
   min-height: 100vh;

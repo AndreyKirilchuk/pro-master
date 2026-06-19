@@ -11,8 +11,8 @@
 
   <div class="admin-overlay" onclick="toggleSidebar()"></div>
 
+  <!-- начало блока "сайдбар"-->
   <div class="admin-layout">
-    <!-- Sidebar -->
     <aside class="admin-sidebar">
       <div class="admin-sidebar__header">
         <div class="admin-sidebar__logo">
@@ -41,15 +41,16 @@
         </a>
       </div>
     </aside>
+    <!-- конец блока "сайдбар"-->
 
-    <!-- Main content -->
+    <!-- начало блока "контент админки"-->
     <div class="admin-main">
       <div class="admin-topbar">
         <button class="burger admin-burger" aria-label="Открыть меню" onclick="toggleSidebar()"><span></span><span></span><span></span></button>
         <span class="admin-topbar__title">Админ-панель</span>
       </div>
       <div class="admin-content">
-        <!-- Stickers tab -->
+        <!-- начало блока "вкладка стикеры"-->
         <div class="admin-tab active" id="tab-stickers">
           <div class="admin-page-header">
             <h1 class="admin-page-header__title">Стикеры</h1>
@@ -144,8 +145,9 @@
             </table>
           </div>
         </div>
+        <!-- конец блока "вкладка стикеры"-->
 
-        <!-- Users tab -->
+        <!-- начало блока "вкладка пользователи"-->
         <div class="admin-tab" id="tab-users">
           <div class="admin-page-header">
             <h1 class="admin-page-header__title">Пользователи</h1>
@@ -190,11 +192,13 @@
             </table>
           </div>
         </div>
+        <!-- конец блока "вкладка пользователи"-->
       </div>
     </div>
+    <!-- конец блока "контент админки"-->
   </div>
 
-  <!-- Modal: Add sticker -->
+  <!-- начало блока "модальное окно"-->
   <div class="modal-overlay" id="modal-sticker" onclick="if (event.target === this) closeModals()">
     <div class="modal" role="dialog" aria-labelledby="modal-title">
       <button type="button" class="modal__close" aria-label="Закрыть" onclick="closeModals()">
@@ -226,6 +230,7 @@
       </form>
     </div>
   </div>
+  <!-- конец блока "модальное окно"-->
 
   <script src="js/main.js"></script>
 </body>
