@@ -1008,11 +1008,13 @@ h4 { font-size: var(--font-size-xl); }
   .header__nav {
     position: static;
     flex: 1;
+    min-width: 0;
     justify-content: space-between;
     transform: none;
     background: none;
     padding: 0;
     flex-direction: row;
+    margin-left: var(--space-3);
   }
 }
 
@@ -1026,7 +1028,7 @@ h4 { font-size: var(--font-size-xl); }
     position: fixed;
     inset: 0;
     top: var(--header-height);
-    background-color: var(--overlay);
+    background-color: transparent;
     z-index: 100;
   }
 
@@ -2308,9 +2310,13 @@ h4 { font-size: var(--font-size-xl); }
   border: 1px solid var(--border-color);
   border-radius: var(--radius-full);
   background-color: var(--bg-body);
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .profile-tab {
+  min-width: 0;
   padding: var(--space-1) var(--space-3);
   border-radius: var(--radius-full);
   font-size: var(--font-size-sm);
@@ -2318,6 +2324,39 @@ h4 { font-size: var(--font-size-xl); }
   color: var(--text-secondary);
   transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
   min-height: 38px;
+  text-align: center;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+@media (max-width: 767px) {
+  .profile-section__header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-3);
+  }
+
+  .profile-tabs {
+    width: 100%;
+    padding: 3px;
+    gap: 1px;
+  }
+
+  .profile-tab {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 3px 0;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    line-height: 1.15;
+    min-height: 30px;
+  }
+
+  .profile-tab.active {
+    box-shadow: none;
+  }
 }
 
 .profile-tab:hover {
