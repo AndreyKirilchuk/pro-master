@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Onest:wght@600;700;800&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Onest:wght@600;700;800&display=swap');
 
 /* ===== variables.css ===== */
 :root {
@@ -59,8 +59,8 @@
   --radius-full: 9999px;
 
   /* Typography */
-  --font-family-body: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-family-heading: 'Onest', 'Inter', system-ui, sans-serif;
+  --font-family-body: 'Manrope', system-ui, -apple-system, sans-serif;
+  --font-family-heading: 'Onest', 'Manrope', system-ui, sans-serif;
   --font-family: var(--font-family-body);
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
@@ -734,12 +734,12 @@ h4 { font-size: var(--font-size-xl); }
     margin-right: var(--space-2);
   }
 
-  .data-table--users tbody td::before {
+  .data-table--responsive tbody td:has(.data-table__label)::before {
     content: none;
     display: none;
   }
 
-  .data-table--users tbody td {
+  .data-table--responsive tbody td:has(.data-table__label) {
     gap: var(--space-2);
   }
 
