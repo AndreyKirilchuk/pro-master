@@ -1,102 +1,119 @@
-(function () {
-  'use strict';
+// Меню в шапке
+const burger = document.querySelector('.header .burger');
+const nav = document.querySelector('.header__nav');
+const headerOverlay = document.querySelector('.header-nav-overlay');
 
-  function initSlider(config) {
-    const track = document.querySelector(config.track);
-    if (!track) return;
+function toggleBurgerMenu() {
+  burger.classList.toggle('active');
+  nav.classList.toggle('open');
+  headerOverlay.classList.toggle('active', nav.classList.contains('open'));
+  document.body.classList.toggle('scroll-lock', nav.classList.contains('open'));
+}
 
-    const prevBtn = document.querySelector(config.prev);
-    const nextBtn = document.querySelector(config.next);
-    const dots = document.querySelectorAll(config.dots);
-    let currentSlide = 0;
-    const totalSlides = track.children.length;
+// Админ-панель
+const sidebar = document.querySelector('.admin-sidebar');
+const adminOverlay = document.querySelector('.admin-overlay');
+const adminBurger = document.querySelector('.admin-burger');
 
-    function goToSlide(index) {
-      if (index < 0) index = totalSlides - 1;
-      if (index >= totalSlides) index = 0;
-      currentSlide = index;
-      track.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+function toggleSidebar() {
+  sidebar.classList.toggle('open');
+  adminOverlay.classList.toggle('active', sidebar.classList.contains('open'));
+  adminBurger.classList.toggle('active');
+  document.body.classList.toggle('scroll-lock', sidebar.classList.contains('open'));
+}
 
-      dots.forEach(function (dot, i) {
-        dot.classList.toggle('active', i === currentSlide);
-      });
-    }
+function openTab(tabId) {
+  if (tabId === 'stickers') {
+    document.getElementById('tab-stickers').classList.add('active');
+    document.getElementById('tab-users').classList.remove('active');
+    document.getElementById('link-stickers').classList.add('active');
+    document.getElementById('link-users').classList.remove('active');
+  } else {
+    document.getElementById('tab-stickers').classList.remove('active');
+    document.getElementById('tab-users').classList.add('active');
+    document.getElementById('link-stickers').classList.remove('active');
+    document.getElementById('link-users').classList.add('active');
+  }
 
-    if (prevBtn) prevBtn.addEventListener('click', function () { goToSlide(currentSlide - 1); });
-    if (nextBtn) nextBtn.addEventListener('click', function () { goToSlide(currentSlide + 1); });
+  toggleSidebar();
+}
+
+function openModal(modalId) {
+  document.getElementById(modalId).classList.add('active');
+  document.body.classList.add('scroll-lock');
+}
+
+function closeModals() {
+  document.querySelectorAll('.modal-overlay').forEach(function (modal) {
+    modal.classList.remove('active');
+  });
+  document.body.classList.remove('scroll-lock');
+}
+
+// FAQ
+const faqQuestions = document.querySelectorAll('.faq__question');
+
+faqQuestions.forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    const item = btn.closest('.faq__item');
+
+    document.querySelectorAll('.faq__item.active').forEach(function (el) {
+      el.classList.remove('active');
+    });
+
+    item.classList.add('active');
+  });
+});
+
+// Слайдер наград
+const awardsTrack = document.querySelector('.awards__track');
+
+if (awardsTrack) {
+  const prevBtn = document.querySelector('.awards__btn--prev');
+  const nextBtn = document.querySelector('.awards__btn--next');
+  const dots = document.querySelectorAll('.awards__dot');
+  let slideIndex = 0;
+  const slideCount = awardsTrack.children.length;
+
+  function showSlide(num) {
+    if (num < 0) num = slideCount - 1;
+    if (num >= slideCount) num = 0;
+    slideIndex = num;
+    awardsTrack.style.transform = 'translateX(-' + (slideIndex * 100) + '%)';
 
     dots.forEach(function (dot, i) {
-      dot.addEventListener('click', function () { goToSlide(i); });
+      dot.classList.toggle('active', i === slideIndex);
     });
-
-
   }
 
-  document.querySelectorAll('.faq__question').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      const item = btn.closest('.faq__item');
-      const isActive = item.classList.contains('active');
+  if (prevBtn) {
+    prevBtn.addEventListener('click', function () {
+      showSlide(slideIndex - 1);
+    });
+  }
 
-      document.querySelectorAll('.faq__item.active').forEach(function (el) {
-        el.classList.remove('active');
-      });
+  if (nextBtn) {
+    nextBtn.addEventListener('click', function () {
+      showSlide(slideIndex + 1);
+    });
+  }
 
-      if (!isActive) {
-        item.classList.add('active');
-      }
+  dots.forEach(function (dot, index) {
+    dot.addEventListener('click', function () {
+      showSlide(index);
     });
   });
+}
 
-  initSlider({
-    track: '.awards__track',
-    prev: '.awards__btn--prev',
-    next: '.awards__btn--next',
-    dots: '.awards__dot',
-    autoplay: 7000
-  });
-
-  /* Scroll reveal + stat count-up */
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const revealEls = document.querySelectorAll('[data-reveal]');
-
-  function animateCount(el) {
-    const target = parseFloat(el.getAttribute('data-count'));
-    if (isNaN(target)) return;
-    const suffix = el.getAttribute('data-suffix') || '';
-    const duration = 1400;
-    const start = performance.now();
-
-    function tick(now) {
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.round(target * eased) + suffix;
-      if (progress < 1) requestAnimationFrame(tick);
-      else el.textContent = target + suffix;
+// Появление блоков при скролле
+const observer = new IntersectionObserver(function (entries) {
+  entries.forEach(function (entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
     }
-    requestAnimationFrame(tick);
-  }
+  });
+});
 
-  if (prefersReduced || !('IntersectionObserver' in window)) {
-    revealEls.forEach(function (el) { el.classList.add('is-visible'); });
-    document.querySelectorAll('[data-count]').forEach(function (el) {
-      el.textContent = el.getAttribute('data-count') + (el.getAttribute('data-suffix') || '');
-    });
-  } else {
-    const observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('is-visible');
-        const counter = entry.target.matches('[data-count]')
-          ? entry.target
-          : entry.target.querySelector('[data-count]');
-        if (counter && !counter.dataset.counted) {
-          counter.dataset.counted = '1';
-          animateCount(counter);
-        }
-        observer.unobserve(entry.target);
-      });
-    }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
-
-    revealEls.forEach(function (el) { observer.observe(el); });
-  }
-})();
+document.querySelectorAll('[data-reveal]').forEach(function (el) {
+  observer.observe(el);
+});

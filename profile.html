@@ -16,10 +16,10 @@
       </a>
       <nav class="header__nav">
         <ul class="header__nav-list">
-          <li><a href="index.html#about" class="header__nav-link">О проекте</a></li>
-          <li><a href="index.html#stages" class="header__nav-link">Этапы</a></li>
-          <li><a href="index.html#awards" class="header__nav-link">Награды</a></li>
-          <li><a href="index.html#faq" class="header__nav-link">FAQ</a></li>
+          <li><a href="index.html#about" class="header__nav-link" onclick="toggleBurgerMenu()">О проекте</a></li>
+          <li><a href="index.html#stages" class="header__nav-link" onclick="toggleBurgerMenu()">Этапы</a></li>
+          <li><a href="index.html#awards" class="header__nav-link" onclick="toggleBurgerMenu()">Награды</a></li>
+          <li><a href="index.html#faq" class="header__nav-link" onclick="toggleBurgerMenu()">FAQ</a></li>
         </ul>
         <div class="header__actions">
           <a href="profile.html" class="header__profile active" aria-current="page">
@@ -30,11 +30,11 @@
           <a href="index.html" class="btn btn--outline btn--sm">Выйти</a>
         </div>
       </nav>
-      <button class="burger" aria-label="Открыть меню"><span></span><span></span><span></span></button>
+      <button class="burger" aria-label="Открыть меню" onclick="toggleBurgerMenu()"><span></span><span></span><span></span></button>
     </div>
   </header>
 
-  <div class="header-nav-overlay" aria-hidden="true"></div>
+  <div class="header-nav-overlay" aria-hidden="true" onclick="toggleBurgerMenu()"></div>
 
   <main class="profile-main">
     <section class="profile-section profile-section--info">
@@ -189,6 +189,6 @@
     </div>
   </footer>
 
-  <script src="js/header.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

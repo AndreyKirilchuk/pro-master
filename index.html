@@ -18,23 +18,23 @@
 
       <nav class="header__nav">
         <ul class="header__nav-list">
-          <li><a href="#about" class="header__nav-link">О проекте</a></li>
-          <li><a href="#stages" class="header__nav-link">Этапы</a></li>
-          <li><a href="#awards" class="header__nav-link">Награды</a></li>
-          <li><a href="#faq" class="header__nav-link">FAQ</a></li>
+          <li><a href="#about" class="header__nav-link" onclick="toggleBurgerMenu()">О проекте</a></li>
+          <li><a href="#stages" class="header__nav-link" onclick="toggleBurgerMenu()">Этапы</a></li>
+          <li><a href="#awards" class="header__nav-link" onclick="toggleBurgerMenu()">Награды</a></li>
+          <li><a href="#faq" class="header__nav-link" onclick="toggleBurgerMenu()">FAQ</a></li>
         </ul>
         <div class="header__actions">
           <a href="login.html" class="btn btn--primary">Войти</a>
         </div>
       </nav>
 
-      <button class="burger" aria-label="Открыть меню">
+      <button class="burger" aria-label="Открыть меню" onclick="toggleBurgerMenu()">
         <span></span><span></span><span></span>
       </button>
     </div>
   </header>
 
-  <div class="header-nav-overlay" aria-hidden="true"></div>
+  <div class="header-nav-overlay" aria-hidden="true" onclick="toggleBurgerMenu()"></div>
 
   <!-- Hero -->
   <section class="hero">
@@ -139,11 +139,11 @@
       </div>
       <div class="about__stats">
         <div class="about__stat" data-reveal>
-          <span class="about__stat-value" data-count="50" data-suffix="+">0</span>
+          <span class="about__stat-value">50+</span>
           <span class="about__stat-label">заданий</span>
         </div>
         <div class="about__stat" data-reveal style="--d:1">
-          <span class="about__stat-value" data-count="6">0</span>
+          <span class="about__stat-value">6</span>
           <span class="about__stat-label">наград</span>
         </div>
         <div class="about__stat" data-reveal style="--d:2">
@@ -151,7 +151,7 @@
           <span class="about__stat-label">лет</span>
         </div>
         <div class="about__stat" data-reveal style="--d:3">
-          <span class="about__stat-value" data-count="100" data-suffix="%">0</span>
+          <span class="about__stat-value">100%</span>
           <span class="about__stat-label">игра</span>
         </div>
       </div>
@@ -449,7 +449,6 @@
     </div>
   </footer>
 
-  <script src="js/header.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
