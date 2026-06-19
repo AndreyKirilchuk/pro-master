@@ -691,6 +691,10 @@ h4 { font-size: var(--font-size-xl); }
   background-color: var(--color-primary-light);
 }
 
+.data-table__label {
+  display: none;
+}
+
 @media (max-width: 767px) {
   .data-table--responsive thead {
     display: none;
@@ -728,6 +732,27 @@ h4 { font-size: var(--font-size-xl); }
     font-size: var(--font-size-sm);
     color: var(--text-secondary);
     margin-right: var(--space-2);
+  }
+
+  .data-table--users tbody td::before {
+    content: none;
+    display: none;
+  }
+
+  .data-table--users tbody td {
+    gap: var(--space-2);
+  }
+
+  .data-table__label {
+    display: inline;
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    flex-shrink: 0;
+  }
+
+  .data-table__value {
+    text-align: right;
   }
 }
 
@@ -2752,7 +2777,10 @@ h4 { font-size: var(--font-size-xl); }
   gap: var(--space-1);
   font-weight: 800;
   font-size: var(--font-size-lg);
-  color: var(--color-admin-green);
+}
+
+.admin-sidebar__logo-text {
+  color: #FFFFFF;
 }
 
 .admin-sidebar__logo svg,
