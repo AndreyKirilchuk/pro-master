@@ -16,7 +16,7 @@
                 <h1 class="auth-form__title">Вход в аккаунт</h1>
                 <p class="auth-form__subtitle">Введите данные для входа в профиль</p>
 
-                <form action="profile.php">
+                <form action="profile.html">
                     <div class="form-group">
                         <label class="form-label" for="email">Email</label>
                         <input class="form-input" type="email" id="email" name="email" placeholder="example@mail.ru"
@@ -35,7 +35,7 @@
                 </form>
 
                 <p class="auth-form__footer">
-                    Нет аккаунта? <a href="?page=register">Зарегистрироваться</a>
+                    Нет аккаунта? <a href="register.html">Зарегистрироваться</a>
                 </p>
             </div>
         </div>

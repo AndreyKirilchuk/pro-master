@@ -31,7 +31,7 @@
             <p class="hero__subtitle animate-fade-in-up animate-delay-2">Пройди 6 этапов рекламного агентства, выполняй
                 задания в команде и собирай коллекцию наград-стикеров.</p>
             <div class="hero__cta animate-fade-in-up animate-delay-3">
-                <a href="?page=register" class="btn btn--primary btn--lg btn--shine">
+                <a href="register.html" class="btn btn--primary btn--lg btn--shine">
                     Начать путь к мастерству
                     <svg class="btn__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                          stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -70,22 +70,22 @@
 
                     <div class="hero-showcase__grid">
                         <div class="hero-showcase__item" style="--i:0">
-                            <img src="../assets/rewards/broadcast-pass.png" alt="Пропуск в эфир" width="72" height="72">
+                            <img src="assets/rewards/broadcast-pass.png" alt="Пропуск в эфир" width="72" height="72">
                         </div>
                         <div class="hero-showcase__item" style="--i:1">
-                            <img src="../assets/rewards/design-attack.png" alt="Мастер пикселей" width="72" height="72">
+                            <img src="assets/rewards/design-attack.png" alt="Мастер пикселей" width="72" height="72">
                         </div>
                         <div class="hero-showcase__item" style="--i:2">
-                            <img src="../assets/rewards/smm-challenge.png" alt="Звезда охватов" width="72" height="72">
+                            <img src="assets/rewards/smm-challenge.png" alt="Звезда охватов" width="72" height="72">
                         </div>
                         <div class="hero-showcase__item" style="--i:3">
-                            <img src="../assets/rewards/it-master.png" alt="Кодовый гений" width="72" height="72">
+                            <img src="assets/rewards/it-master.png" alt="Кодовый гений" width="72" height="72">
                         </div>
                         <div class="hero-showcase__item" style="--i:4">
-                            <img src="../assets/rewards/team-defanse.png" alt="Король слова" width="72" height="72">
+                            <img src="assets/rewards/team-defanse.png" alt="Король слова" width="72" height="72">
                         </div>
                         <div class="hero-showcase__item hero-showcase__item--featured" style="--i:5">
-                            <img src="../assets/rewards/pinnacle-master.png" alt="Легенда агентства" width="72"
+                            <img src="assets/rewards/pinnacle-master.png" alt="Легенда агентства" width="72"
                                  height="72">
                         </div>
                     </div>
@@ -219,15 +219,15 @@
                 <div class="awards__track">
                     <div class="award-slide">
                         <div class="award-slide__sticker">
-                            <img src="../assets/rewards/broadcast-pass.png" alt="Пропуск в эфир"
-                                 class="award-slide__image" width="160" height="160">
+                            <img src="assets/rewards/broadcast-pass.png" alt="Пропуск в эфир" class="award-slide__image"
+                                 width="160" height="160">
                         </div>
                         <div class="award-slide__content">
                             <span class="award-slide__label">Этап 1</span>
                             <h3 class="award-slide__title">Пропуск в эфир</h3>
                             <p class="award-slide__desc">Награда за «Первый день в компании»: ты познакомился с
                                 командой, выбрал направление и создал свой первый слоган.</p>
-                            <a href="../assets/rewards/broadcast-pass.png" class="award-slide__download" download>
+                            <a href="assets/rewards/broadcast-pass.png" class="award-slide__download" download>
                                 <svg class="award-slide__download-icon" viewBox="0 0 24 24" fill="none"
                                      stroke="currentColor" stroke-width="2" aria-hidden="true">
                                     <path d="M12 3v12M7 10l5 5 5-5"/>
@@ -239,15 +239,15 @@
                     </div>
                     <div class="award-slide">
                         <div class="award-slide__sticker">
-                            <img src="../assets/rewards/design-attack.png" alt="Мастер пикселей"
-                                 class="award-slide__image" width="160" height="160">
+                            <img src="assets/rewards/design-attack.png" alt="Мастер пикселей" class="award-slide__image"
+                                 width="160" height="160">
                         </div>
                         <div class="award-slide__content">
                             <span class="award-slide__label">Этап 2</span>
                             <h3 class="award-slide__title">Мастер пикселей</h3>
                             <p class="award-slide__desc">Награда за «Дизайн-Атаку»: логотип готов, визуальная концепция
                                 кампании собрана — ты настоящий дизайнер!</p>
-                            <a href="../assets/rewards/design-attack.png" class="award-slide__download" download>
+                            <a href="assets/rewards/design-attack.png" class="award-slide__download" download>
                                 <svg class="award-slide__download-icon" viewBox="0 0 24 24" fill="none"
                                      stroke="currentColor" stroke-width="2" aria-hidden="true">
                                     <path d="M12 3v12M7 10l5 5 5-5"/>
@@ -259,15 +259,15 @@
                     </div>
                     <div class="award-slide">
                         <div class="award-slide__sticker">
-                            <img src="../assets/rewards/smm-challenge.png" alt="Звезда охватов"
-                                 class="award-slide__image" width="160" height="160">
+                            <img src="assets/rewards/smm-challenge.png" alt="Звезда охватов" class="award-slide__image"
+                                 width="160" height="160">
                         </div>
                         <div class="award-slide__content">
                             <span class="award-slide__label">Этап 3</span>
                             <h3 class="award-slide__title">Звезда охватов</h3>
                             <p class="award-slide__desc">Награда за «SMM-Челлендж»: контент-план составлен, визуалы
                                 подобраны — соцсети клиента в надёжных руках.</p>
-                            <a href="../assets/rewards/smm-challenge.png" class="award-slide__download" download>
+                            <a href="assets/rewards/smm-challenge.png" class="award-slide__download" download>
                                 <svg class="award-slide__download-icon" viewBox="0 0 24 24" fill="none"
                                      stroke="currentColor" stroke-width="2" aria-hidden="true">
                                     <path d="M12 3v12M7 10l5 5 5-5"/>
@@ -279,7 +279,7 @@
                     </div>
                     <div class="award-slide">
                         <div class="award-slide__sticker">
-                            <img src="../assets/rewards/it-master.png" alt="Кодовый гений" class="award-slide__image"
+                            <img src="assets/rewards/it-master.png" alt="Кодовый гений" class="award-slide__image"
                                  width="160" height="160">
                         </div>
                         <div class="award-slide__content">
@@ -287,7 +287,7 @@
                             <h3 class="award-slide__title">Кодовый гений</h3>
                             <p class="award-slide__desc">Награда за «IT-Мастер»: landing page свёрстан или интерактив
                                 работает — техническая задача выполнена на отлично.</p>
-                            <a href="../assets/rewards/it-master.png" class="award-slide__download" download>
+                            <a href="assets/rewards/it-master.png" class="award-slide__download" download>
                                 <svg class="award-slide__download-icon" viewBox="0 0 24 24" fill="none"
                                      stroke="currentColor" stroke-width="2" aria-hidden="true">
                                     <path d="M12 3v12M7 10l5 5 5-5"/>
@@ -299,7 +299,7 @@
                     </div>
                     <div class="award-slide">
                         <div class="award-slide__sticker">
-                            <img src="../assets/rewards/team-defanse.png" alt="Король слова" class="award-slide__image"
+                            <img src="assets/rewards/team-defanse.png" alt="Король слова" class="award-slide__image"
                                  width="160" height="160">
                         </div>
                         <div class="award-slide__content">
@@ -307,7 +307,7 @@
                             <h3 class="award-slide__title">Король слова</h3>
                             <p class="award-slide__desc">Награда за «Командную защиту»: идея представлена заказчику
                                 уверенно и убедительно — команда гордится тобой!</p>
-                            <a href="../assets/rewards/team-defanse.png" class="award-slide__download" download>
+                            <a href="assets/rewards/team-defanse.png" class="award-slide__download" download>
                                 <svg class="award-slide__download-icon" viewBox="0 0 24 24" fill="none"
                                      stroke="currentColor" stroke-width="2" aria-hidden="true">
                                     <path d="M12 3v12M7 10l5 5 5-5"/>
@@ -319,7 +319,7 @@
                     </div>
                     <div class="award-slide">
                         <div class="award-slide__sticker">
-                            <img src="../assets/rewards/pinnacle-master.png" alt="Легенда агентства"
+                            <img src="assets/rewards/pinnacle-master.png" alt="Легенда агентства"
                                  class="award-slide__image" width="160" height="160">
                         </div>
                         <div class="award-slide__content">
@@ -327,7 +327,7 @@
                             <h3 class="award-slide__title">Легенда агентства</h3>
                             <p class="award-slide__desc">Главная награда за «Вершину мастерства»: комплексная кампания
                                 защищена — ты настоящий профи агентства!</p>
-                            <a href="../assets/rewards/pinnacle-master.png" class="award-slide__download" download>
+                            <a href="assets/rewards/pinnacle-master.png" class="award-slide__download" download>
                                 <svg class="award-slide__download-icon" viewBox="0 0 24 24" fill="none"
                                      stroke="currentColor" stroke-width="2" aria-hidden="true">
                                     <path d="M12 3v12M7 10l5 5 5-5"/>
@@ -446,4 +446,3 @@
     </div>
 </section>
 <!-- конец блока "FAQ"-->
-
