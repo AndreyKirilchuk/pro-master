@@ -22,6 +22,14 @@ function toggleSidebar() {
   document.body.classList.toggle('scroll-lock', sidebar.classList.contains('open'));
 }
 
+function closeSidebar() {
+  if (!sidebar) return;
+  sidebar.classList.remove('open');
+  if (adminOverlay) adminOverlay.classList.remove('active');
+  if (adminBurger) adminBurger.classList.remove('active');
+  document.body.classList.remove('scroll-lock');
+}
+
 function openTab(tabId) {
   if (tabId === 'stickers') {
     document.getElementById('tab-stickers').classList.add('active');
@@ -35,12 +43,27 @@ function openTab(tabId) {
     document.getElementById('link-users').classList.add('active');
   }
 
-  toggleSidebar();
+  closeSidebar();
 }
 
 function openModal(modalId) {
   document.getElementById(modalId).classList.add('active');
   document.body.classList.add('scroll-lock');
+}
+
+function openStickerAdd() {
+  var form = document.getElementById('sticker-add-form');
+  if (form) form.reset();
+  openModal('modal-sticker');
+}
+
+function openStickerEdit(row) {
+  if (!row) return;
+  document.getElementById('edit-sticker-name').value = row.dataset.name || '';
+  document.getElementById('edit-sticker-stage').value = row.dataset.stage || '';
+  document.getElementById('edit-sticker-round').value = row.dataset.round || '';
+  document.getElementById('edit-sticker-desc').value = row.dataset.desc || '';
+  openModal('modal-sticker-edit');
 }
 
 function closeModals() {
