@@ -28,7 +28,8 @@ CREATE TABLE `stickers` (
   `stage_number` VARCHAR(10) NOT NULL,
   `description` TEXT NOT NULL,
   `file_path` VARCHAR(512) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uq_stickers_stage_number` (`stage_number`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `user_stickers` (

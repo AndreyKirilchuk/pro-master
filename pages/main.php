@@ -1,6 +1,6 @@
 <?php
 
-$sql = "SELECT * FROM stickers ORDER BY stage_number";
+$sql = "SELECT * FROM stickers ORDER BY stage_number + 0";
 $stickers = $connect->query($sql)->fetchAll();
 
 $userStickerIds = [];
@@ -73,7 +73,7 @@ if ($user['role'] == 'user') {
                 <div class="hero-showcase__frame">
                     <div class="hero-showcase__head">
                         <span class="hero-showcase__label">Коллекция наград</span>
-                        <span class="hero-showcase__meta">6 этапов</span>
+                        <span class="hero-showcase__meta"><?= count($stickers) ?> этапов</span>
                     </div>
 
                     <div class="hero-showcase__path">
@@ -86,25 +86,13 @@ if ($user['role'] == 'user') {
                     </div>
 
                     <div class="hero-showcase__grid">
-                        <div class="hero-showcase__item" style="--i:0">
-                            <img src="assets/rewards/broadcast-pass.png" alt="Пропуск в эфир" width="72" height="72">
-                        </div>
-                        <div class="hero-showcase__item" style="--i:1">
-                            <img src="assets/rewards/design-attack.png" alt="Мастер пикселей" width="72" height="72">
-                        </div>
-                        <div class="hero-showcase__item" style="--i:2">
-                            <img src="assets/rewards/smm-challenge.png" alt="Звезда охватов" width="72" height="72">
-                        </div>
-                        <div class="hero-showcase__item" style="--i:3">
-                            <img src="assets/rewards/it-master.png" alt="Кодовый гений" width="72" height="72">
-                        </div>
-                        <div class="hero-showcase__item" style="--i:4">
-                            <img src="assets/rewards/team-defanse.png" alt="Король слова" width="72" height="72">
-                        </div>
-                        <div class="hero-showcase__item hero-showcase__item--featured" style="--i:5">
-                            <img src="assets/rewards/pinnacle-master.png" alt="Легенда агентства" width="72"
-                                 height="72">
-                        </div>
+                        <?php foreach ($stickers as $index => $sticker): ?>
+                            <div class="hero-showcase__item<?= $index + 1 == count($stickers) ? ' hero-showcase__item--featured' : '' ?>"
+                                 style="--i:<?= $index ?>">
+                                <img src="<?= $sticker['file_path'] ?>" alt="<?= $sticker['sticker_name'] ?>" width="72"
+                                     height="72">
+                            </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
