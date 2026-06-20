@@ -2,8 +2,9 @@
 
 $errors = [];
 $openAddModal = false;
+$openEditModal = false;
 
-$sql = "SELECT * FROM stickers ORDER BY stage_number + 0";
+$sql = "SELECT * FROM stickers ORDER BY stage_number";
 $stickers = $connect->query($sql)->fetchAll();
 
 $sql = "SELECT * FROM users";
@@ -74,30 +75,139 @@ if (isset($_POST['add_sticker'])) {
 
     if (empty($_FILES['sticker_image']['name'])) {
         $errors['file_path'] = 'Загрузите изображение';
-    } elseif (mb_strlen($_FILES['sticker_image']['name']) > 255) {
-        $errors['file_path'] = 'Имя файла не более 255 символов';
-    } elseif ($_FILES['sticker_image']['size'] > 2097152) {
-        $errors['file_path'] = 'Размер файла не более 2 МБ';
+    } else {
+        $types = ['jpg', 'png'];
+        $file_name = $_FILES['sticker_image']['name'];
+        $file_type = pathinfo($file_name, PATHINFO_EXTENSION);
+        if (!in_array($file_type, $types)) {
+            $errors['file_path'] = 'Неверный формат';
+        } elseif ($_FILES['sticker_image']['size'] > 2097152) {
+            $errors['file_path'] = 'Размер файла не более 2 МБ';
+        }
     }
 
     if (empty($errors)) {
-        $fileName = $_FILES['sticker_image']['name'];
-        $uploadPath = 'assets/rewards/' . $fileName;
-
-        if (!move_uploaded_file($_FILES['sticker_image']['tmp_name'], $uploadPath)) {
-            $errors['file_path'] = 'Не удалось загрузить файл';
-            $openAddModal = true;
-        } else {
-            $file_path = $uploadPath;
+        $dir = 'assets/rewards/';
+        $new_name = $dir . time() . '_' . $file_name;
+        if (move_uploaded_file($_FILES['sticker_image']['tmp_name'], $new_name)) {
+            $file_path = $new_name;
 
             $sql = "INSERT INTO stickers (sticker_name, stage_name, stage_number, description, file_path)
             VALUES ('$sticker_name', '$stage_name', '$stage_number', '$description', '$file_path')";
             $connect->query($sql);
 
             echo '<script>location.href="?page=admin"</script>';
+        } else {
+            $errors['file_path'] = 'Не удалось загрузить файл';
+            $openAddModal = true;
         }
     } else {
         $openAddModal = true;
+    }
+}
+
+if (isset($_POST['edit_sticker'])) {
+    $sticker_id = $_POST['sticker_id'] ?? '';
+    $sticker_name = $_POST['sticker_name'] ?? '';
+    $stage_name = $_POST['stage_name'] ?? '';
+    $stage_number = $_POST['stage_number'] ?? '';
+    $description = $_POST['description'] ?? '';
+
+    $sql = "SELECT * FROM stickers WHERE id = '$sticker_id'";
+    $sticker = $connect->query($sql)->fetch();
+
+    if (empty($sticker)) {
+        echo '<script>location.href="?page=admin";</script>';
+        exit;
+    }
+
+    $file_path = $sticker['file_path'];
+
+    if (empty($sticker_name)) {
+        $errors['sticker_name'] = 'Введите название';
+    } elseif (mb_strlen($sticker_name) < 2) {
+        $errors['sticker_name'] = 'Не менее 2х символов';
+    } elseif (mb_strlen($sticker_name) > 255) {
+        $errors['sticker_name'] = 'Не более 255 символов';
+    } else {
+        $sql = "SELECT * FROM stickers WHERE sticker_name = '$sticker_name' AND id != '$sticker_id'";
+        $check = $connect->query($sql)->fetch();
+        if (!empty($check)) {
+            $errors['sticker_name'] = 'Стикер с таким названием уже существует';
+        }
+    }
+
+    if (empty($stage_name)) {
+        $errors['stage_name'] = 'Введите название этапа';
+    } elseif (mb_strlen($stage_name) < 2) {
+        $errors['stage_name'] = 'Не менее 2х символов';
+    } elseif (mb_strlen($stage_name) > 255) {
+        $errors['stage_name'] = 'Не более 255 символов';
+    } else {
+        $sql = "SELECT * FROM stickers WHERE stage_name = '$stage_name' AND id != '$sticker_id'";
+        $check = $connect->query($sql)->fetch();
+        if (!empty($check)) {
+            $errors['stage_name'] = 'Этап с таким названием уже существует';
+        }
+    }
+
+    if (empty($stage_number)) {
+        $errors['stage_number'] = 'Введите номер этапа';
+    } elseif (mb_strlen($stage_number) > 10) {
+        $errors['stage_number'] = 'Не более 10 символов';
+    } else {
+        $sql = "SELECT * FROM stickers WHERE stage_number = '$stage_number' AND id != '$sticker_id'";
+        $check = $connect->query($sql)->fetch();
+        if (!empty($check)) {
+            $errors['stage_number'] = 'Стикер с таким номером этапа уже существует';
+        }
+    }
+
+    if (empty($description)) {
+        $errors['description'] = 'Введите описание';
+    } elseif (mb_strlen($description) < 10) {
+        $errors['description'] = 'Не менее 10 символов';
+    } elseif (mb_strlen($description) > 2000) {
+        $errors['description'] = 'Не более 2000 символов';
+    }
+
+    if (!empty($_FILES['sticker_image']['name'])) {
+        $types = ['jpg', 'png'];
+        $file_name = $_FILES['sticker_image']['name'];
+        $file_type = pathinfo($file_name, PATHINFO_EXTENSION);
+        if (!in_array($file_type, $types)) {
+            $errors['file_path'] = 'Неверный формат';
+        } elseif ($_FILES['sticker_image']['size'] > 2097152) {
+            $errors['file_path'] = 'Размер файла не более 2 МБ';
+        }
+    }
+
+    if (empty($errors)) {
+        if (!empty($_FILES['sticker_image']['name'])) {
+            $dir = 'assets/rewards/';
+            $new_name = $dir . time() . '_' . $file_name;
+            if (move_uploaded_file($_FILES['sticker_image']['tmp_name'], $new_name)) {
+                $file_path = $new_name;
+            } else {
+                $errors['file_path'] = 'Не удалось загрузить файл';
+                $openEditModal = true;
+            }
+        }
+
+        if (empty($errors)) {
+            $sql = "UPDATE stickers SET
+                sticker_name = '$sticker_name',
+                stage_name = '$stage_name',
+                stage_number = '$stage_number',
+                description = '$description',
+                file_path = '$file_path'
+                WHERE id = '$sticker_id'";
+            $connect->query($sql);
+
+            echo '<script>location.href="?page=admin"</script>';
+        }
+    } else {
+        $openEditModal = true;
     }
 }
 ?>
@@ -184,7 +294,8 @@ if (isset($_POST['add_sticker'])) {
                                 </thead>
                                 <tbody>
                                 <?php foreach ($stickers as $sticker): ?>
-                                    <tr data-name="<?= $sticker['sticker_name'] ?>"
+                                    <tr data-id="<?= $sticker['id'] ?>"
+                                        data-name="<?= $sticker['sticker_name'] ?>"
                                         data-stage="<?= $sticker['stage_name'] ?>"
                                         data-round="<?= $sticker['stage_number'] ?>"
                                         data-desc="<?= $sticker['description'] ?>">
@@ -281,41 +392,41 @@ if (isset($_POST['add_sticker'])) {
                 </button>
                 <h2 class="modal__title" id="modal-sticker-title">Добавить стикер</h2>
                 <form id="sticker-add-form" action="?page=admin" method="post" enctype="multipart/form-data" novalidate>
-                    <div class="form-group<?= isset($errors['sticker_name']) ? ' form-group--error' : '' ?>">
+                    <div class="form-group<?= isset($_POST['add_sticker']) && isset($errors['sticker_name']) ? ' form-group--error' : '' ?>">
                         <label class="form-label" for="sticker-name">Название</label>
                         <input class="form-input" type="text" id="sticker-name" name="sticker_name"
                                placeholder="Имя персонажа"
-                               value="<?= $_POST['sticker_name'] ?? '' ?>">
-                        <?php if (isset($errors['sticker_name'])): ?>
+                               value="<?= isset($_POST['add_sticker']) ? ($_POST['sticker_name'] ?? '') : '' ?>">
+                        <?php if (isset($_POST['add_sticker']) && isset($errors['sticker_name'])): ?>
                             <span class="form-error"><?= $errors['sticker_name'] ?></span>
                         <?php endif; ?>
                     </div>
-                    <div class="form-group<?= isset($errors['stage_name']) ? ' form-group--error' : '' ?>">
+                    <div class="form-group<?= isset($_POST['add_sticker']) && isset($errors['stage_name']) ? ' form-group--error' : '' ?>">
                         <label class="form-label" for="sticker-stage">Название этапа</label>
                         <input class="form-input" type="text" id="sticker-stage" name="stage_name"
                                placeholder="Например: Дизайн-Атака"
-                               value="<?= $_POST['stage_name'] ?? '' ?>">
-                        <?php if (isset($errors['stage_name'])): ?>
+                               value="<?= isset($_POST['add_sticker']) ? ($_POST['stage_name'] ?? '') : '' ?>">
+                        <?php if (isset($_POST['add_sticker']) && isset($errors['stage_name'])): ?>
                             <span class="form-error"><?= $errors['stage_name'] ?></span>
                         <?php endif; ?>
                     </div>
-                    <div class="form-group<?= isset($errors['stage_number']) ? ' form-group--error' : '' ?>">
+                    <div class="form-group<?= isset($_POST['add_sticker']) && isset($errors['stage_number']) ? ' form-group--error' : '' ?>">
                         <label class="form-label" for="sticker-round">Номер этапа</label>
                         <input class="form-input" type="text" id="sticker-round" name="stage_number" placeholder="1–6"
-                               value="<?= $_POST['stage_number'] ?? '' ?>">
-                        <?php if (isset($errors['stage_number'])): ?>
+                               value="<?= isset($_POST['add_sticker']) ? ($_POST['stage_number'] ?? '') : '' ?>">
+                        <?php if (isset($_POST['add_sticker']) && isset($errors['stage_number'])): ?>
                             <span class="form-error"><?= $errors['stage_number'] ?></span>
                         <?php endif; ?>
                     </div>
-                    <div class="form-group<?= isset($errors['description']) ? ' form-group--error' : '' ?>">
+                    <div class="form-group<?= isset($_POST['add_sticker']) && isset($errors['description']) ? ' form-group--error' : '' ?>">
                         <label class="form-label" for="sticker-desc">Описание стикера</label>
                         <textarea class="form-textarea" id="sticker-desc" name="description" rows="4"
-                                  placeholder="Краткое описание награды за прохождение этапа"><?= $_POST['description'] ?? '' ?></textarea>
-                        <?php if (isset($errors['description'])): ?>
+                                  placeholder="Краткое описание награды за прохождение этапа"><?= isset($_POST['add_sticker']) ? ($_POST['description'] ?? '') : '' ?></textarea>
+                        <?php if (isset($_POST['add_sticker']) && isset($errors['description'])): ?>
                             <span class="form-error"><?= $errors['description'] ?></span>
                         <?php endif; ?>
                     </div>
-                    <div class="form-group<?= isset($errors['file_path']) ? ' form-group--error' : '' ?>">
+                    <div class="form-group<?= isset($_POST['add_sticker']) && isset($errors['file_path']) ? ' form-group--error' : '' ?>">
                         <label class="form-label" for="sticker-image">Изображение стикера</label>
                         <label class="file-upload">
                             <input type="file" id="sticker-image" name="sticker_image" accept="image/*" hidden>
@@ -326,7 +437,7 @@ if (isset($_POST['add_sticker'])) {
                             </svg>
                             <span class="file-upload__text">Перетащите файл или нажмите для загрузки</span>
                         </label>
-                        <?php if (isset($errors['file_path'])): ?>
+                        <?php if (isset($_POST['add_sticker']) && isset($errors['file_path'])): ?>
                             <span class="form-error"><?= $errors['file_path'] ?></span>
                         <?php endif; ?>
                     </div>
@@ -346,38 +457,60 @@ if (isset($_POST['add_sticker'])) {
                     </svg>
                 </button>
                 <h2 class="modal__title" id="modal-sticker-edit-title">Редактировать стикер</h2>
-                <form id="sticker-edit-form" novalidate>
-                    <div class="form-group">
+                <form id="sticker-edit-form" action="?page=admin" method="post" enctype="multipart/form-data" novalidate>
+                    <input type="hidden" id="edit-sticker-id" name="sticker_id"
+                           value="<?= isset($_POST['edit_sticker']) ? ($_POST['sticker_id'] ?? '') : '' ?>">
+                    <div class="form-group<?= isset($_POST['edit_sticker']) && isset($errors['sticker_name']) ? ' form-group--error' : '' ?>">
                         <label class="form-label" for="edit-sticker-name">Название</label>
-                        <input class="form-input" type="text" id="edit-sticker-name" placeholder="Имя персонажа">
+                        <input class="form-input" type="text" id="edit-sticker-name" name="sticker_name"
+                               placeholder="Имя персонажа"
+                               value="<?= isset($_POST['edit_sticker']) ? ($_POST['sticker_name'] ?? '') : '' ?>">
+                        <?php if (isset($_POST['edit_sticker']) && isset($errors['sticker_name'])): ?>
+                            <span class="form-error"><?= $errors['sticker_name'] ?></span>
+                        <?php endif; ?>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group<?= isset($_POST['edit_sticker']) && isset($errors['stage_name']) ? ' form-group--error' : '' ?>">
                         <label class="form-label" for="edit-sticker-stage">Название этапа</label>
-                        <input class="form-input" type="text" id="edit-sticker-stage"
-                               placeholder="Например: Дизайн-Атака">
+                        <input class="form-input" type="text" id="edit-sticker-stage" name="stage_name"
+                               placeholder="Например: Дизайн-Атака"
+                               value="<?= isset($_POST['edit_sticker']) ? ($_POST['stage_name'] ?? '') : '' ?>">
+                        <?php if (isset($_POST['edit_sticker']) && isset($errors['stage_name'])): ?>
+                            <span class="form-error"><?= $errors['stage_name'] ?></span>
+                        <?php endif; ?>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group<?= isset($_POST['edit_sticker']) && isset($errors['stage_number']) ? ' form-group--error' : '' ?>">
                         <label class="form-label" for="edit-sticker-round">Номер этапа</label>
-                        <input class="form-input" type="text" id="edit-sticker-round" placeholder="1–6">
+                        <input class="form-input" type="text" id="edit-sticker-round" name="stage_number"
+                               placeholder="1–6"
+                               value="<?= isset($_POST['edit_sticker']) ? ($_POST['stage_number'] ?? '') : '' ?>">
+                        <?php if (isset($_POST['edit_sticker']) && isset($errors['stage_number'])): ?>
+                            <span class="form-error"><?= $errors['stage_number'] ?></span>
+                        <?php endif; ?>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group<?= isset($_POST['edit_sticker']) && isset($errors['description']) ? ' form-group--error' : '' ?>">
                         <label class="form-label" for="edit-sticker-desc">Описание стикера</label>
-                        <textarea class="form-textarea" id="edit-sticker-desc" rows="4"
-                                  placeholder="Краткое описание награды за прохождение этапа"></textarea>
+                        <textarea class="form-textarea" id="edit-sticker-desc" name="description" rows="4"
+                                  placeholder="Краткое описание награды за прохождение этапа"><?= isset($_POST['edit_sticker']) ? ($_POST['description'] ?? '') : '' ?></textarea>
+                        <?php if (isset($_POST['edit_sticker']) && isset($errors['description'])): ?>
+                            <span class="form-error"><?= $errors['description'] ?></span>
+                        <?php endif; ?>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label">Изображение стикера</label>
+                    <div class="form-group<?= isset($_POST['edit_sticker']) && isset($errors['file_path']) ? ' form-group--error' : '' ?>">
+                        <label class="form-label" for="edit-sticker-image">Изображение стикера</label>
                         <label class="file-upload">
-                            <input type="file" accept="image/*" hidden>
+                            <input type="file" id="edit-sticker-image" name="sticker_image" accept="image/*" hidden>
                             <svg class="file-upload__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor"
                                  stroke-width="2">
                                 <path d="M24 32V16M16 24l8-8 8 8"/>
                                 <rect x="6" y="6" width="36" height="36" rx="8"/>
                             </svg>
-                            <span class="file-upload__text">Перетащите файл или нажмите для загрузки</span>
+                            <span class="file-upload__text">Перетащите файл или нажмите для загрузки (необязательно)</span>
                         </label>
+                        <?php if (isset($_POST['edit_sticker']) && isset($errors['file_path'])): ?>
+                            <span class="form-error"><?= $errors['file_path'] ?></span>
+                        <?php endif; ?>
                     </div>
-                    <button type="button" class="btn btn--admin" style="width:100%">Сохранить</button>
+                    <button type="submit" name="edit_sticker" class="btn btn--admin" style="width:100%">Сохранить</button>
                 </form>
             </div>
         </div>
@@ -387,4 +520,7 @@ if (isset($_POST['add_sticker'])) {
 
 <?php if ($openAddModal): ?>
     <script>openModal('modal-sticker');</script>
+<?php endif; ?>
+<?php if ($openEditModal): ?>
+    <script>openModal('modal-sticker-edit');</script>
 <?php endif; ?>

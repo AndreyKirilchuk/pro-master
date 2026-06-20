@@ -1,6 +1,6 @@
 <?php
 
-$sql = "SELECT * FROM stickers ORDER BY stage_number + 0";
+$sql = "SELECT * FROM stickers ORDER BY stage_number";
 $stickers = $connect->query($sql)->fetchAll();
 
 $userStickerIds = [];

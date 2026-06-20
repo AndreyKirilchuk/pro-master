@@ -44,10 +44,6 @@ CREATE TABLE `user_stickers` (
   CONSTRAINT `fk_user_stickers_sticker` FOREIGN KEY (`sticker_id`) REFERENCES `stickers` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `users` (`name`, `email`, `password`, `role`) VALUES
-('Алексей Иванов', 'alex@mail.ru', '$2y$12$y5mN0GFUR7JqNq7sV1KB/O2.kRXwcsvp9l.qGqxKmYTh4NLd4QPnq', 'user'),
-('Админ Системы', 'admin@promaster.ru', '$2y$12$y5mN0GFUR7JqNq7sV1KB/O2.kRXwcsvp9l.qGqxKmYTh4NLd4QPnq', 'admin');
-
 INSERT INTO `stickers` (`sticker_name`, `stage_name`, `stage_number`, `description`, `file_path`) VALUES
 (
   'Пропуск в эфир',

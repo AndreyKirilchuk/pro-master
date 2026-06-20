@@ -66,6 +66,7 @@ function openStickerAdd() {
 
 function openStickerEdit(row) {
   if (!row) return;
+  document.getElementById('edit-sticker-id').value = row.dataset.id || '';
   document.getElementById('edit-sticker-name').value = row.dataset.name || '';
   document.getElementById('edit-sticker-stage').value = row.dataset.stage || '';
   document.getElementById('edit-sticker-round').value = row.dataset.round || '';
