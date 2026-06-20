@@ -14,19 +14,25 @@ if ($user['role'] == 'user') {
 
 $passedStages = count($userStickerIds);
 $totalStages = count($stickers);
-$progressPercent =  round(($passedStages / $totalStages) * 100, 2);
+$progressPercent = $totalStages > 0 ? round(($passedStages / $totalStages) * 100, 2) : 0;
 
 if(isset($_GET['filter_open']))
 {
-    
+    foreach ($stickers as $key => $sticker) {
+        if(!in_array($sticker['id'], $userStickerIds)){
+            unset($stickers[$key]);
+        }
+    }
 }
 
 if(isset($_GET['filter_closed']))
 {
-    $stickers
+    foreach ($stickers as $key => $sticker) {
+        if(in_array($sticker['id'], $userStickerIds)){
+            unset($stickers[$key]);
+        }
+    }
 }
-
-
 
 ?>
 
@@ -68,9 +74,9 @@ if(isset($_GET['filter_closed']))
                 <div class="profile-section__header">
                     <h2 class="profile-section__title">Мои стикеры</h2>
                     <div class="profile-tabs">
-                        <a href="?page=profile" class="profile-tab active" data-filter="all">Все</a>
-                        <a href="?page=profile&filter=open" class="profile-tab" data-filter="unlocked">Открытые</a>
-                        <a href="?page=profile&filter=closed" class="profile-tab" data-filter="locked">Заблокированные</a>
+                        <a href="?page=profile" class="profile-tab<?= !isset($_GET['filter_open']) && !isset($_GET['filter_closed']) ? ' active' : '' ?>">Все</a>
+                        <a href="?page=profile&filter_open" class="profile-tab<?= isset($_GET['filter_open']) ? ' active' : '' ?>">Открытые</a>
+                        <a href="?page=profile&filter_closed" class="profile-tab<?= isset($_GET['filter_closed']) ? ' active' : '' ?>">Заблокированные</a>
                     </div>
                 </div>
 
