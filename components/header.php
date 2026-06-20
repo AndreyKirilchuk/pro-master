@@ -22,7 +22,8 @@
             <?php else : ?>
 
                 <div class="header__actions">
-                    <a href="?page=profile" class="header__profile active" aria-current="page"
+                    <a href="<?php if ($user['role'] == 'user') echo '?page=profile'; else echo '?page=admin' ?>"
+                       class="header__profile active" aria-current="page"
                        onclick="closeBurgerMenu()">
                         <span class="header__profile-avatar"><?= mb_substr($user['name'], 0, 1) ?></span>
                         <span class="header__profile-name"><?= $user['name'] ?></span>
