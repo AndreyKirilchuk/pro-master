@@ -17,25 +17,30 @@
 
 $page = $_GET["page"] ?? null;
 
+function goToMain()
+{
+    echo '<script>location.href="/"</script>';
+    exit;
+}
+
 if ($page !== "admin") include('components/header.php');
 
-if ($page === "login") include('pages/login.php');
-if ($page === "register") include('pages/register.php');
-if ($page === "profile") {
-    if ($user['role'] != 'user') {
-        echo '<script>location.href="/"</script>';
-        exit;
-    }
+if ($page == "login") {
+    if ($user['role'] != 'guest') goToMain();
+    include('pages/login.php');
+}
+if ($page == "register") {
+    if ($user['role'] != 'guest') goToMain();
+    include('pages/register.php');
+}
+if ($page == "profile") {
+    if ($user['role'] != 'user') goToMain();
     include('pages/profile.php');
 }
 if (
     $page == "admin"
 ) {
-    if ($user['role'] != 'admin') {
-        echo '<script>location.href="/"</script>';
-        exit;
-    }
-
+    if ($user['role'] != 'admin') goToMain();
     include('pages/admin.php');
 }
 
