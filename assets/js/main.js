@@ -74,6 +74,12 @@ function openStickerEdit(row) {
   openModal('modal-sticker-edit');
 }
 
+function openStickerDelete(row) {
+  if (!row) return;
+  document.getElementById('delete-sticker-id').value = row.dataset.id || '';
+  openModal('modal-sticker-delete');
+}
+
 function closeModals() {
   document.querySelectorAll('.modal-overlay').forEach(function (modal) {
     modal.classList.remove('active');

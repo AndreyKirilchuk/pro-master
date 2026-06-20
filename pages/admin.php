@@ -322,13 +322,11 @@ if (isset($_POST['edit_sticker'])) {
                                   width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                   stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path
                                       d="M18.5 2.5a2.12 2.12 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-                      <form action="?page=admin" method="post">
-                          <input type="hidden" name="sticker_id" value="<?= $sticker['id'] ?>">
-                          <button name="delete_sticker" class="delete" aria-label="Удалить"><svg width="24" height="24" viewBox="0 0 24 24"
+                      <button type="button" aria-label="Удалить" class="delete"
+                              onclick="openStickerDelete(this.closest('tr'))"><svg width="24" height="24" viewBox="0 0 24 24"
                                                                            fill="none" stroke="currentColor"
                                                                            stroke-width="2"><path
                                           d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg></button>
-                      </form>
                     </div>
                   </span></td>
                                     </tr>
@@ -515,6 +513,28 @@ if (isset($_POST['edit_sticker'])) {
             </div>
         </div>
         <!-- конец блока "модальное окно редактирования"-->
+
+        <!-- начало блока "модальное окно удаления"-->
+        <div class="modal-overlay" id="modal-sticker-delete" onclick="if (event.target === this) closeModals()">
+            <div class="modal" role="dialog" aria-labelledby="modal-sticker-delete-title">
+                <button type="button" class="modal__close" aria-label="Закрыть" onclick="closeModals()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18M6 6l12 12"/>
+                    </svg>
+                </button>
+                    <h2 class="modal__title" id="modal-sticker-delete-title">Вы точно хотите удалить стикер?</h2>
+                <form action="?page=admin" method="post">
+                    <input type="hidden" id="delete-sticker-id" name="sticker_id" value="">
+                    <div style="display:flex; gap:12px; margin-top:24px;">
+                        <button type="button" class="btn btn--outline" style="flex:1" onclick="closeModals()">Отмена
+                        </button>
+                        <button type="submit" name="delete_sticker" class="btn btn--admin" style="flex:1">Удалить
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- конец блока "модальное окно удаления"-->
 
     </div>
 
