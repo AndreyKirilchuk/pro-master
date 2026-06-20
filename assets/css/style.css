@@ -2988,14 +2988,20 @@ h4 { font-size: var(--font-size-xl); }
 }
 
 .admin-table-actions button {
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-sm);
   color: var(--text-muted);
   transition: var(--transition);
+}
+
+.admin-table-actions button svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
 }
 
 .admin-table-actions button:hover {
