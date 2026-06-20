@@ -161,6 +161,12 @@ if ($user['role'] == 'user') {
                 </article>
             <?php endforeach; ?>
         </div>
+
+        <?php if (count($stickers) == 0): ?>
+            <div class="section__header--center">
+                Этапы скоро появятся
+            </div>
+        <?php endif; ?>
     </div>
 </section>
 <!-- конец блока "этапы"-->
@@ -178,67 +184,74 @@ if ($user['role'] == 'user') {
                 свою коллекцию</p>
         </div>
 
-        <div class="awards__frame">
-            <div class="awards__slider">
-                <div class="awards__track">
-                    <?php foreach ($stickers as $sticker):
-                        $hasSticker = in_array($sticker['id'], $userStickerIds);
-                        ?>
-                        <div class="award-slide<?= !$hasSticker ? ' award-slide--locked' : '' ?>">
-                            <div class="award-slide__sticker">
-                                <img src="<?= $sticker['file_path'] ?>" alt="<?= $sticker['sticker_name'] ?>"
-                                     class="award-slide__image"
-                                     width="160" height="160">
-                                <?php if (!$hasSticker): ?>
-                                    <div class="award-slide__lock" aria-hidden="true">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <rect x="5" y="11" width="14" height="10" rx="2"/>
-                                            <path d="M8 11V7a4 4 0 018 0v4"/>
-                                        </svg>
-                                    </div>
-                                <?php endif; ?>
+        <?php if (count($stickers) > 0): ?>
+            <div class="awards__frame">
+                <div class="awards__slider">
+                    <div class="awards__track">
+                        <?php foreach ($stickers as $sticker):
+                            $hasSticker = in_array($sticker['id'], $userStickerIds);
+                            ?>
+                            <div class="award-slide<?= !$hasSticker ? ' award-slide--locked' : '' ?>">
+                                <div class="award-slide__sticker">
+                                    <img src="<?= $sticker['file_path'] ?>" alt="<?= $sticker['sticker_name'] ?>"
+                                         class="award-slide__image"
+                                         width="160" height="160">
+                                    <?php if (!$hasSticker): ?>
+                                        <div class="award-slide__lock" aria-hidden="true">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <rect x="5" y="11" width="14" height="10" rx="2"/>
+                                                <path d="M8 11V7a4 4 0 018 0v4"/>
+                                            </svg>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="award-slide__content">
+                                    <span class="award-slide__label">Этап <?= $sticker['stage_number'] ?></span>
+                                    <h3 class="award-slide__title"><?= $sticker['sticker_name'] ?></h3>
+                                    <p class="award-slide__desc"><?= $sticker['description'] ?></p>
+                                    <?php if ($hasSticker): ?>
+                                        <a href="<?= $sticker['file_path'] ?>" class="award-slide__download" download>
+                                            <svg class="award-slide__download-icon" viewBox="0 0 24 24" fill="none"
+                                                 stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                                <path d="M12 3v12M7 10l5 5 5-5"/>
+                                                <path d="M5 21h14"/>
+                                            </svg>
+                                            Скачать
+                                        </a>
+                                    <?php else: ?>
+                                        <p class="award-slide__locked-text">Пройди этап, чтобы открыть награду</p>
+                                    <?php endif; ?>
+                                </div>
                             </div>
-                            <div class="award-slide__content">
-                                <span class="award-slide__label">Этап <?= $sticker['stage_number'] ?></span>
-                                <h3 class="award-slide__title"><?= $sticker['sticker_name'] ?></h3>
-                                <p class="award-slide__desc"><?= $sticker['description'] ?></p>
-                                <?php if ($hasSticker): ?>
-                                    <a href="<?= $sticker['file_path'] ?>" class="award-slide__download" download>
-                                        <svg class="award-slide__download-icon" viewBox="0 0 24 24" fill="none"
-                                             stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                            <path d="M12 3v12M7 10l5 5 5-5"/>
-                                            <path d="M5 21h14"/>
-                                        </svg>
-                                        Скачать
-                                    </a>
-                                <?php else: ?>
-                                    <p class="award-slide__locked-text">Пройди этап, чтобы открыть награду</p>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
-            </div>
 
-            <div class="awards__controls">
-                <button class="awards__btn awards__btn--prev" aria-label="Предыдущая награда">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M15 18l-6-6 6-6"/>
-                    </svg>
-                </button>
-                <div class="awards__dots">
-                    <?php foreach ($stickers as $index => $sticker): ?>
-                        <button class="awards__dot<?= $index === 0 ? ' active' : '' ?>"
-                                aria-label="Награда <?= $index + 1 ?>"></button>
-                    <?php endforeach; ?>
+                <div class="awards__controls">
+                    <button class="awards__btn awards__btn--prev" aria-label="Предыдущая награда">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                             stroke-width="2">
+                            <path d="M15 18l-6-6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="awards__dots">
+                        <?php foreach ($stickers as $index => $sticker): ?>
+                            <button class="awards__dot<?= $index === 0 ? ' active' : '' ?>"></button>
+                        <?php endforeach; ?>
+                    </div>
+                    <button class="awards__btn awards__btn--next" aria-label="Следующая награда">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                             stroke-width="2">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                    </button>
                 </div>
-                <button class="awards__btn awards__btn--next" aria-label="Следующая награда">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 18l6-6-6-6"/>
-                    </svg>
-                </button>
             </div>
-        </div>
+        <?php else: ?>
+            <div class="section__header--center">
+                Награды скоро появятся
+            </div>
+        <?php endif; ?>
     </div>
 </section>
 <!-- конец блока "слайдер наград"-->
