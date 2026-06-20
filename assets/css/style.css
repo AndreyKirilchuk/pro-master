@@ -1201,11 +1201,17 @@ h4 { font-size: var(--font-size-xl); }
   .header__actions {
     flex-direction: column;
     width: 100%;
+    align-items: stretch;
   }
 
   .header__actions .btn {
     width: 100%;
+    display: flex;
     justify-content: center;
+  }
+
+  .header__actions form {
+    width: 100%;
   }
 
   .header__actions .btn--sm {

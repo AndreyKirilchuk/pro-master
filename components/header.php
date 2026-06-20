@@ -19,7 +19,7 @@
                     <a href="?page=login" class="btn btn--primary" onclick="closeBurgerMenu()">Войти</a>
                 </div>
 
-            <?php else: ?>
+            <?php else : ?>
 
                 <div class="header__actions">
                     <a href="?page=profile" class="header__profile active" aria-current="page"
@@ -27,8 +27,14 @@
                         <span class="header__profile-avatar"><?= mb_substr($user['name'], 0, 1) ?></span>
                         <span class="header__profile-name"><?= $user['name'] ?></span>
                     </a>
-                    <a href="?page=profile" class="btn btn--primary header__profile-btn" aria-current="page"
-                       onclick="closeBurgerMenu()">Профиль</a>
+                    <?php if ($user['role'] == 'user'): ?>
+                        <a href="?page=profile" class="btn btn--primary header__profile-btn" aria-current="page"
+                           onclick="closeBurgerMenu()">Профиль</a>
+                    <?php else : ?>
+                        <a href="?page=admin" class="btn btn--primary header__profile-btn" aria-current="page"
+                           onclick="closeBurgerMenu()">Админ панель</a>
+                    <?php endif; ?>
+
                     <form action="?" method="post">
                         <button name="exit" class="btn btn--outline btn--sm">Выйти</button>
                     </form>
