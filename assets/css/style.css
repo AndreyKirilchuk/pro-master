@@ -71,6 +71,7 @@
   --container-max: 1440px;
   --header-height: 72px;
   --sidebar-width: 260px;
+  --modal-max-height: min(640px, calc(100dvh - var(--space-4) * 2));
 }
 
 /* Базовые стили */
@@ -523,6 +524,29 @@ h4 { font-size: var(--font-size-xl); }
   color: var(--text-muted);
 }
 
+.form-textarea {
+  width: 100%;
+  padding: var(--space-1) var(--space-2);
+  min-height: 112px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  transition: var(--transition);
+  resize: none;
+  line-height: 1.5;
+}
+
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(78, 204, 10, 0.15);
+}
+
+.form-textarea::placeholder {
+  color: var(--text-muted);
+}
+
 /* Бейджи */
 .badge {
   display: inline-flex;
@@ -564,14 +588,17 @@ h4 { font-size: var(--font-size-xl); }
   align-items: center;
   justify-content: center;
   padding: var(--space-2);
+  overflow-y: auto;
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   transition: var(--transition);
 }
 
 .modal-overlay.active {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
 
 .modal {
@@ -580,10 +607,39 @@ h4 { font-size: var(--font-size-xl); }
   padding: var(--space-4);
   width: 100%;
   max-width: 480px;
+  max-height: var(--modal-max-height);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  flex-shrink: 0;
+  margin: auto;
   box-shadow: var(--shadow-lg);
   transform: translateY(16px);
   transition: var(--transition);
   position: relative;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) var(--color-dark-soft);
+}
+
+.modal::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal::-webkit-scrollbar-track {
+  margin: var(--space-1) 0;
+  background-color: var(--color-dark-soft);
+  border-radius: var(--radius-full);
+}
+
+.modal::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary);
+  border-radius: var(--radius-full);
+  border: 2px solid var(--bg-card);
+}
+
+.modal::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-primary-dark);
 }
 
 .modal-overlay.active .modal {
@@ -686,7 +742,7 @@ h4 { font-size: var(--font-size-xl); }
   display: none;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
   .data-table--responsive thead {
     display: none;
   }
@@ -744,6 +800,31 @@ h4 { font-size: var(--font-size-xl); }
 
   .data-table__value {
     text-align: right;
+  }
+
+  .data-table--responsive tbody td.data-table__cell--desc {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .data-table--responsive tbody td.data-table__cell--desc .data-table__value,
+  .data-table--responsive tbody td.data-table__cell--desc .admin-table-desc {
+    width: 100%;
+    max-width: none;
+    text-align: left;
+    line-height: 1.5;
+  }
+}
+
+@media (min-width: 1024px) {
+  .data-table--responsive .data-table__cell--desc {
+    min-width: 240px;
+    width: 32%;
+  }
+
+  .admin-table-desc {
+    max-width: none;
   }
 }
 
@@ -2907,14 +2988,20 @@ h4 { font-size: var(--font-size-xl); }
 }
 
 .admin-table-actions button {
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-sm);
   color: var(--text-muted);
   transition: var(--transition);
+}
+
+.admin-table-actions button svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
 }
 
 .admin-table-actions button:hover {
@@ -2935,3 +3022,9 @@ h4 { font-size: var(--font-size-xl); }
   object-fit: contain;
 }
 
+.admin-table-desc {
+  max-width: 320px;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
