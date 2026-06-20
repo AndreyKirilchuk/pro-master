@@ -30,7 +30,7 @@
                     </svg>
                     Пользователи
                 </a>
-                <a href="index.html" class="admin-sidebar__link">
+                <a href="/" class="admin-sidebar__link">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
                     </svg>
@@ -38,7 +38,7 @@
                 </a>
             </nav>
             <div class="admin-sidebar__footer">
-                <a href="login.html" class="admin-sidebar__link">
+                <a href="?page=login" class="admin-sidebar__link">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/>
                     </svg>
@@ -320,25 +320,23 @@
                 </svg>
             </button>
             <h2 class="modal__title" id="modal-sticker-title">Добавить стикер</h2>
-            <form id="sticker-add-form">
+            <form id="sticker-add-form" novalidate>
                 <div class="form-group">
                     <label class="form-label" for="sticker-name">Название</label>
-                    <input class="form-input" type="text" id="sticker-name" placeholder="Имя персонажа" required>
+                    <input class="form-input" type="text" id="sticker-name" placeholder="Имя персонажа">
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="sticker-stage">Название этапа</label>
-                    <input class="form-input" type="text" id="sticker-stage" placeholder="Например: Дизайн-Атака"
-                           required>
+                    <input class="form-input" type="text" id="sticker-stage" placeholder="Например: Дизайн-Атака">
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="sticker-round">Номер этапа</label>
-                    <input class="form-input" type="number" id="sticker-round" min="1" max="6" placeholder="1–6"
-                           required>
+                    <input class="form-input" type="text" id="sticker-round" placeholder="1–6">
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="sticker-desc">Описание стикера</label>
                     <textarea class="form-textarea" id="sticker-desc" rows="4"
-                              placeholder="Краткое описание награды за прохождение этапа" required></textarea>
+                              placeholder="Краткое описание награды за прохождение этапа"></textarea>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Изображение стикера</label>
@@ -367,25 +365,23 @@
                 </svg>
             </button>
             <h2 class="modal__title" id="modal-sticker-edit-title">Редактировать стикер</h2>
-            <form id="sticker-edit-form">
+            <form id="sticker-edit-form" novalidate>
                 <div class="form-group">
                     <label class="form-label" for="edit-sticker-name">Название</label>
-                    <input class="form-input" type="text" id="edit-sticker-name" placeholder="Имя персонажа" required>
+                    <input class="form-input" type="text" id="edit-sticker-name" placeholder="Имя персонажа">
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="edit-sticker-stage">Название этапа</label>
-                    <input class="form-input" type="text" id="edit-sticker-stage" placeholder="Например: Дизайн-Атака"
-                           required>
+                    <input class="form-input" type="text" id="edit-sticker-stage" placeholder="Например: Дизайн-Атака">
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="edit-sticker-round">Номер этапа</label>
-                    <input class="form-input" type="number" id="edit-sticker-round" min="1" max="6" placeholder="1–6"
-                           required>
+                    <input class="form-input" type="text" id="edit-sticker-round" placeholder="1–6">
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="edit-sticker-desc">Описание стикера</label>
                     <textarea class="form-textarea" id="edit-sticker-desc" rows="4"
-                              placeholder="Краткое описание награды за прохождение этапа" required></textarea>
+                              placeholder="Краткое описание награды за прохождение этапа"></textarea>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Изображение стикера</label>

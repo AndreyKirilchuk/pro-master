@@ -547,6 +547,28 @@ h4 { font-size: var(--font-size-xl); }
   color: var(--text-muted);
 }
 
+.form-group--error .form-input,
+.form-group--error .form-textarea {
+  border-color: #F04438;
+}
+
+.form-group--error .form-input:focus,
+.form-group--error .form-textarea:focus {
+  border-color: #F04438;
+  box-shadow: 0 0 0 3px rgba(240, 68, 56, 0.15);
+}
+
+.form-error {
+  display: block;
+  margin-top: 6px;
+  font-size: var(--font-size-sm);
+  color: #F04438;
+}
+
+.form-group--error .form-checkbox {
+  color: #F04438;
+}
+
 /* Бейджи */
 .badge {
   display: inline-flex;

@@ -74,36 +74,52 @@ if (isset($_POST['register'])) {
                 <h1 class="auth-form__title">Регистрация</h1>
                 <p class="auth-form__subtitle">Создайте аккаунт, чтобы начать игру</p>
 
-                <form action="profile.html">
-                    <div class="form-group">
+                <form action="?page=register" method="post" novalidate>
+                    <div class="form-group<?= isset($errors['name']) ? ' form-group--error' : '' ?>">
                         <label class="form-label" for="name">Имя</label>
                         <input class="form-input" type="text" id="name" name="name" placeholder="Как тебя зовут?"
-                               required>
+                               value="<?= $_POST['name'] ?? '' ?>">
+                        <?php if (isset($errors['name'])): ?>
+                            <span class="form-error"><?= $errors['name'] ?></span>
+                        <?php endif; ?>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group<?= isset($errors['email']) ? ' form-group--error' : '' ?>">
                         <label class="form-label" for="email">Email</label>
-                        <input class="form-input" type="email" id="email" name="email" placeholder="example@mail.ru"
-                               required>
+                        <input class="form-input" type="text" id="email" name="email" placeholder="example@mail.ru"
+                               value="<?= $_POST['email'] ?? '' ?>">
+                        <?php if (isset($errors['email'])): ?>
+                            <span class="form-error"><?= $errors['email'] ?></span>
+                        <?php endif; ?>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group<?= isset($errors['password']) ? ' form-group--error' : '' ?>">
                         <label class="form-label" for="password">Пароль</label>
                         <input class="form-input form-input--accent" type="password" id="password" name="password"
-                               placeholder="Минимум 6 символов" required minlength="6">
+                               placeholder="Минимум 6 символов">
+                        <?php if (isset($errors['password'])): ?>
+                            <span class="form-error"><?= $errors['password'] ?></span>
+                        <?php endif; ?>
+                    </div>
+                    <div class="form-group<?= isset($errors['password2']) ? ' form-group--error' : '' ?>">
+                        <label class="form-label" for="password2">Повторите пароль</label>
+                        <input class="form-input" type="password" id="password2" name="password2" placeholder="••••••••">
+                        <?php if (isset($errors['password2'])): ?>
+                            <span class="form-error"><?= $errors['password2'] ?></span>
+                        <?php endif; ?>
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="password2">Повторите пароль</label>
-                        <input class="form-input" type="password" id="password2" name="password2" placeholder="••••••••"
-                               required>
+                        <label class="form-checkbox">
+                            <input type="checkbox" name="confirm"<?= isset($_POST['confirm']) ? ' checked' : '' ?>>
+                            Я согласен с условиями использования
+                        </label>
+                        <?php if (isset($errors['confirm'])): ?>
+                            <span class="form-error"><?= $errors['confirm'] ?></span>
+                        <?php endif; ?>
                     </div>
-                    <label class="form-checkbox">
-                        <input type="checkbox" name="agree" required>
-                        Я согласен с условиями использования
-                    </label>
-                    <button type="submit" class="btn btn--primary auth-form__submit">Зарегистрироваться</button>
+                    <button type="submit" name="register" class="btn btn--primary auth-form__submit">Зарегистрироваться</button>
                 </form>
 
                 <p class="auth-form__footer">
-                    Уже есть аккаунт? <a href="login.html">Войти</a>
+                    Уже есть аккаунт? <a href="?page=login">Войти</a>
                 </p>
             </div>
         </div>

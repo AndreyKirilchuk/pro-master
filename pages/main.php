@@ -31,7 +31,7 @@
             <p class="hero__subtitle animate-fade-in-up animate-delay-2">Пройди 6 этапов рекламного агентства, выполняй
                 задания в команде и собирай коллекцию наград-стикеров.</p>
             <div class="hero__cta animate-fade-in-up animate-delay-3">
-                <a href="register.html" class="btn btn--primary btn--lg btn--shine">
+                <a href="?page=register" class="btn btn--primary btn--lg btn--shine">
                     Начать путь к мастерству
                     <svg class="btn__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                          stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">

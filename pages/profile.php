@@ -24,7 +24,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="index.html#stages" class="btn btn--primary profile-card__btn">Продолжить обучение</a>
+                    <a href="/#stages" class="btn btn--primary profile-card__btn">Продолжить обучение</a>
                 </div>
             </div>
         </section>

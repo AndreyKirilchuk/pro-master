@@ -1,3 +1,44 @@
+<?php
+$errors = [];
+
+if (isset($_POST['login'])) {
+    $email = $_POST['email'] ?? null;
+    $password = $_POST['password'] ?? null;
+
+    if (!$email) {
+        $errors['email'] = 'Введите почту';
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors['email'] = 'Неверный формат почты';
+    }
+
+    if (!$password) {
+        $errors['password'] = 'Введите пароль';
+    }
+
+    if (empty($errors)) {
+        $sql = "SELECT * FROM users WHERE email = '$email'";
+        $check = $connect->query($sql)->fetch();
+        if(!$check){
+            $errors['email'] = 'Пользователя с такой почтой не существует';
+        }elseif(!password_verify($password,$check['password'])){
+            $errors['password'] = 'Неверный пароль';
+        }
+
+        if (empty($errors)) {
+            $_SESSION['uid'] = $check['id'];
+            session_write_close();
+
+            if($check['role'] === 'user')
+            {
+                echo '<script>location.href="?page=profile"</script>';
+            }else{
+                echo '<script>location.href="?page=admin"</script>';
+            }
+        }
+    }
+}
+?>
+
 <div class="page-with-header">
     <!-- начало блока "авторизация"-->
     <div class="auth-page">
@@ -16,26 +57,28 @@
                 <h1 class="auth-form__title">Вход в аккаунт</h1>
                 <p class="auth-form__subtitle">Введите данные для входа в профиль</p>
 
-                <form action="profile.html">
-                    <div class="form-group">
+                <form action="?page=login" method="post" novalidate>
+                    <div class="form-group<?= isset($errors['email']) ? ' form-group--error' : '' ?>">
                         <label class="form-label" for="email">Email</label>
-                        <input class="form-input" type="email" id="email" name="email" placeholder="example@mail.ru"
-                               required>
+                        <input class="form-input" type="text" id="email" name="email" placeholder="example@mail.ru"
+                               value="<?= $_POST['email'] ?? '' ?>">
+                        <?php if (isset($errors['email'])): ?>
+                            <span class="form-error"><?= $errors['email'] ?></span>
+                        <?php endif; ?>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group<?= isset($errors['password']) ? ' form-group--error' : '' ?>">
                         <label class="form-label" for="password">Пароль</label>
                         <input class="form-input form-input--accent" type="password" id="password" name="password"
-                               placeholder="••••••••" required>
+                               placeholder="••••••••">
+                        <?php if (isset($errors['password'])): ?>
+                            <span class="form-error"><?= $errors['password'] ?></span>
+                        <?php endif; ?>
                     </div>
-                    <label class="form-checkbox">
-                        <input type="checkbox" name="remember">
-                        Запомнить меня
-                    </label>
-                    <button type="submit" class="btn btn--primary auth-form__submit">Войти</button>
+                    <button type="submit" name="login" class="btn btn--primary auth-form__submit">Войти</button>
                 </form>
 
                 <p class="auth-form__footer">
-                    Нет аккаунта? <a href="register.html">Зарегистрироваться</a>
+                    Нет аккаунта? <a href="?page=register">Зарегистрироваться</a>
                 </p>
             </div>
         </div>
