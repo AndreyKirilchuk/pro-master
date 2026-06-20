@@ -1,3 +1,20 @@
+<?php
+
+$sql = "SELECT * FROM stickers ORDER BY stage_number";
+$stickers = $connect->query($sql)->fetchAll();
+
+$userStickerIds = [];
+if ($user['role'] == 'user') {
+    $sql = "SELECT sticker_id FROM user_stickers WHERE user_id = {$user['id']}";
+    $userStickers = $connect->query($sql)->fetchAll();
+    foreach ($userStickers as $userSticker) {
+        $userStickerIds[] = $userSticker['sticker_id'];
+    }
+}
+
+?>
+
+
 <!-- начало блока "главный экран"-->
 <section class="hero">
     <div class="hero__bg" aria-hidden="true">
@@ -145,57 +162,16 @@
         </div>
 
         <div class="stages__grid">
-            <article class="stage-card" data-reveal style="--d:0">
-                <div class="stage-card__head">
-                    <span class="stage-card__number">1</span>
-                    <h3 class="stage-card__title">Первый день в компании</h3>
-                </div>
-                <p class="stage-card__text">Знакомство с командой, выбор направления и создание первого простого слогана
-                    для клиента.</p>
-                <span class="stage-card__reward">+ Пропуск в эфир</span>
-            </article>
-            <article class="stage-card" data-reveal style="--d:1">
-                <div class="stage-card__head">
-                    <span class="stage-card__number">2</span>
-                    <h3 class="stage-card__title">Дизайн-Атака</h3>
-                </div>
-                <p class="stage-card__text">Разработка логотипа и визуальной концепции рекламной кампании.</p>
-                <span class="stage-card__reward">+ Мастер пикселей</span>
-            </article>
-            <article class="stage-card" data-reveal style="--d:2">
-                <div class="stage-card__head">
-                    <span class="stage-card__number">3</span>
-                    <h3 class="stage-card__title">SMM-Челлендж</h3>
-                </div>
-                <p class="stage-card__text">Создание контент-плана и подбор визуалов для социальных сетей.</p>
-                <span class="stage-card__reward">+ Звезда охватов</span>
-            </article>
-            <article class="stage-card" data-reveal style="--d:3">
-                <div class="stage-card__head">
-                    <span class="stage-card__number">4</span>
-                    <h3 class="stage-card__title">IT-Мастер</h3>
-                </div>
-                <p class="stage-card__text">Решение технических задач: вёрстка landing page или простой интерактивный
-                    элемент.</p>
-                <span class="stage-card__reward">+ Кодовый гений</span>
-            </article>
-            <article class="stage-card" data-reveal style="--d:4">
-                <div class="stage-card__head">
-                    <span class="stage-card__number">5</span>
-                    <h3 class="stage-card__title">Командная защита</h3>
-                </div>
-                <p class="stage-card__text">Подготовка и презентация идеи заказчику — командный этап.</p>
-                <span class="stage-card__reward">+ Король слова</span>
-            </article>
-            <article class="stage-card stage-card--final" data-reveal style="--d:5">
-                <div class="stage-card__head">
-                    <span class="stage-card__number">6</span>
-                    <h3 class="stage-card__title">Вершина мастерства</h3>
-                </div>
-                <p class="stage-card__text">Комплексная рекламная кампания и защита проекта перед руководством
-                    компании.</p>
-                <span class="stage-card__reward">+ Легенда агентства</span>
-            </article>
+            <?php foreach ($stickers as $sticker): ?>
+                <article class="stage-card" data-reveal style="--d:0">
+                    <div class="stage-card__head">
+                        <span class="stage-card__number"><?= $sticker['stage_number'] ?></span>
+                        <h3 class="stage-card__title"><?= $sticker['stage_name'] ?></h3>
+                    </div>
+                    <p class="stage-card__text"><?= $sticker['description'] ?></p>
+                    <span class="stage-card__reward">+ <?= $sticker['sticker_name'] ?></span>
+                </article>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
@@ -217,126 +193,42 @@
         <div class="awards__frame">
             <div class="awards__slider">
                 <div class="awards__track">
-                    <div class="award-slide">
-                        <div class="award-slide__sticker">
-                            <img src="assets/rewards/broadcast-pass.png" alt="Пропуск в эфир" class="award-slide__image"
-                                 width="160" height="160">
+                    <?php foreach ($stickers as $sticker):
+                        $hasSticker = in_array($sticker['id'], $userStickerIds);
+                        ?>
+                        <div class="award-slide<?= !$hasSticker ? ' award-slide--locked' : '' ?>">
+                            <div class="award-slide__sticker">
+                                <img src="<?= $sticker['file_path'] ?>" alt="<?= $sticker['sticker_name'] ?>"
+                                     class="award-slide__image"
+                                     width="160" height="160">
+                                <?php if (!$hasSticker): ?>
+                                    <div class="award-slide__lock" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="5" y="11" width="14" height="10" rx="2"/>
+                                            <path d="M8 11V7a4 4 0 018 0v4"/>
+                                        </svg>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                            <div class="award-slide__content">
+                                <span class="award-slide__label">Этап <?= $sticker['stage_number'] ?></span>
+                                <h3 class="award-slide__title"><?= $sticker['sticker_name'] ?></h3>
+                                <p class="award-slide__desc"><?= $sticker['description'] ?></p>
+                                <?php if ($hasSticker): ?>
+                                    <a href="<?= $sticker['file_path'] ?>" class="award-slide__download" download>
+                                        <svg class="award-slide__download-icon" viewBox="0 0 24 24" fill="none"
+                                             stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                            <path d="M12 3v12M7 10l5 5 5-5"/>
+                                            <path d="M5 21h14"/>
+                                        </svg>
+                                        Скачать
+                                    </a>
+                                <?php else: ?>
+                                    <p class="award-slide__locked-text">Пройди этап, чтобы открыть награду</p>
+                                <?php endif; ?>
+                            </div>
                         </div>
-                        <div class="award-slide__content">
-                            <span class="award-slide__label">Этап 1</span>
-                            <h3 class="award-slide__title">Пропуск в эфир</h3>
-                            <p class="award-slide__desc">Награда за «Первый день в компании»: ты познакомился с
-                                командой, выбрал направление и создал свой первый слоган.</p>
-                            <a href="assets/rewards/broadcast-pass.png" class="award-slide__download" download>
-                                <svg class="award-slide__download-icon" viewBox="0 0 24 24" fill="none"
-                                     stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                    <path d="M12 3v12M7 10l5 5 5-5"/>
-                                    <path d="M5 21h14"/>
-                                </svg>
-                                Скачать
-                            </a>
-                        </div>
-                    </div>
-                    <div class="award-slide">
-                        <div class="award-slide__sticker">
-                            <img src="assets/rewards/design-attack.png" alt="Мастер пикселей" class="award-slide__image"
-                                 width="160" height="160">
-                        </div>
-                        <div class="award-slide__content">
-                            <span class="award-slide__label">Этап 2</span>
-                            <h3 class="award-slide__title">Мастер пикселей</h3>
-                            <p class="award-slide__desc">Награда за «Дизайн-Атаку»: логотип готов, визуальная концепция
-                                кампании собрана — ты настоящий дизайнер!</p>
-                            <a href="assets/rewards/design-attack.png" class="award-slide__download" download>
-                                <svg class="award-slide__download-icon" viewBox="0 0 24 24" fill="none"
-                                     stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                    <path d="M12 3v12M7 10l5 5 5-5"/>
-                                    <path d="M5 21h14"/>
-                                </svg>
-                                Скачать
-                            </a>
-                        </div>
-                    </div>
-                    <div class="award-slide">
-                        <div class="award-slide__sticker">
-                            <img src="assets/rewards/smm-challenge.png" alt="Звезда охватов" class="award-slide__image"
-                                 width="160" height="160">
-                        </div>
-                        <div class="award-slide__content">
-                            <span class="award-slide__label">Этап 3</span>
-                            <h3 class="award-slide__title">Звезда охватов</h3>
-                            <p class="award-slide__desc">Награда за «SMM-Челлендж»: контент-план составлен, визуалы
-                                подобраны — соцсети клиента в надёжных руках.</p>
-                            <a href="assets/rewards/smm-challenge.png" class="award-slide__download" download>
-                                <svg class="award-slide__download-icon" viewBox="0 0 24 24" fill="none"
-                                     stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                    <path d="M12 3v12M7 10l5 5 5-5"/>
-                                    <path d="M5 21h14"/>
-                                </svg>
-                                Скачать
-                            </a>
-                        </div>
-                    </div>
-                    <div class="award-slide">
-                        <div class="award-slide__sticker">
-                            <img src="assets/rewards/it-master.png" alt="Кодовый гений" class="award-slide__image"
-                                 width="160" height="160">
-                        </div>
-                        <div class="award-slide__content">
-                            <span class="award-slide__label">Этап 4</span>
-                            <h3 class="award-slide__title">Кодовый гений</h3>
-                            <p class="award-slide__desc">Награда за «IT-Мастер»: landing page свёрстан или интерактив
-                                работает — техническая задача выполнена на отлично.</p>
-                            <a href="assets/rewards/it-master.png" class="award-slide__download" download>
-                                <svg class="award-slide__download-icon" viewBox="0 0 24 24" fill="none"
-                                     stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                    <path d="M12 3v12M7 10l5 5 5-5"/>
-                                    <path d="M5 21h14"/>
-                                </svg>
-                                Скачать
-                            </a>
-                        </div>
-                    </div>
-                    <div class="award-slide">
-                        <div class="award-slide__sticker">
-                            <img src="assets/rewards/team-defanse.png" alt="Король слова" class="award-slide__image"
-                                 width="160" height="160">
-                        </div>
-                        <div class="award-slide__content">
-                            <span class="award-slide__label">Этап 5</span>
-                            <h3 class="award-slide__title">Король слова</h3>
-                            <p class="award-slide__desc">Награда за «Командную защиту»: идея представлена заказчику
-                                уверенно и убедительно — команда гордится тобой!</p>
-                            <a href="assets/rewards/team-defanse.png" class="award-slide__download" download>
-                                <svg class="award-slide__download-icon" viewBox="0 0 24 24" fill="none"
-                                     stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                    <path d="M12 3v12M7 10l5 5 5-5"/>
-                                    <path d="M5 21h14"/>
-                                </svg>
-                                Скачать
-                            </a>
-                        </div>
-                    </div>
-                    <div class="award-slide">
-                        <div class="award-slide__sticker">
-                            <img src="assets/rewards/pinnacle-master.png" alt="Легенда агентства"
-                                 class="award-slide__image" width="160" height="160">
-                        </div>
-                        <div class="award-slide__content">
-                            <span class="award-slide__label">Этап 6</span>
-                            <h3 class="award-slide__title">Легенда агентства</h3>
-                            <p class="award-slide__desc">Главная награда за «Вершину мастерства»: комплексная кампания
-                                защищена — ты настоящий профи агентства!</p>
-                            <a href="assets/rewards/pinnacle-master.png" class="award-slide__download" download>
-                                <svg class="award-slide__download-icon" viewBox="0 0 24 24" fill="none"
-                                     stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                    <path d="M12 3v12M7 10l5 5 5-5"/>
-                                    <path d="M5 21h14"/>
-                                </svg>
-                                Скачать
-                            </a>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
 
@@ -347,12 +239,10 @@
                     </svg>
                 </button>
                 <div class="awards__dots">
-                    <button class="awards__dot active" aria-label="Награда 1"></button>
-                    <button class="awards__dot" aria-label="Награда 2"></button>
-                    <button class="awards__dot" aria-label="Награда 3"></button>
-                    <button class="awards__dot" aria-label="Награда 4"></button>
-                    <button class="awards__dot" aria-label="Награда 5"></button>
-                    <button class="awards__dot" aria-label="Награда 6"></button>
+                    <?php foreach ($stickers as $index => $sticker): ?>
+                        <button class="awards__dot<?= $index === 0 ? ' active' : '' ?>"
+                                aria-label="Награда <?= $index + 1 ?>"></button>
+                    <?php endforeach; ?>
                 </div>
                 <button class="awards__btn awards__btn--next" aria-label="Следующая награда">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">

@@ -10,6 +10,13 @@ function toggleBurgerMenu() {
   document.body.classList.toggle('scroll-lock', nav.classList.contains('open'));
 }
 
+function closeBurgerMenu() {
+  burger.classList.remove('active');
+  nav.classList.remove('open');
+  headerOverlay.classList.remove('active');
+  document.body.classList.remove('scroll-lock');
+}
+
 // Админ-панель
 const sidebar = document.querySelector('.admin-sidebar');
 const adminOverlay = document.querySelector('.admin-overlay');

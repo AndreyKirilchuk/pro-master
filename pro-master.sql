@@ -7,6 +7,7 @@ CREATE DATABASE IF NOT EXISTS `pro-master`
 
 USE `pro-master`;
 
+DROP TABLE IF EXISTS `user_stickers`;
 DROP TABLE IF EXISTS `stickers`;
 DROP TABLE IF EXISTS `users`;
 
@@ -28,6 +29,18 @@ CREATE TABLE `stickers` (
   `description` TEXT NOT NULL,
   `file_path` VARCHAR(512) NOT NULL,
   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `user_stickers` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` INT UNSIGNED NOT NULL,
+  `sticker_id` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uq_user_sticker` (`user_id`, `sticker_id`),
+  KEY `idx_user_stickers_user_id` (`user_id`),
+  KEY `idx_user_stickers_sticker_id` (`sticker_id`),
+  CONSTRAINT `fk_user_stickers_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_user_stickers_sticker` FOREIGN KEY (`sticker_id`) REFERENCES `stickers` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `users` (`name`, `email`, `password`, `role`) VALUES

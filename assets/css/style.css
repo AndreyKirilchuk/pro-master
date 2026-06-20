@@ -887,6 +887,8 @@ h4 { font-size: var(--font-size-xl); }
 @media (max-width: 1023px) {
   .burger {
     display: flex;
+    position: relative;
+    z-index: 102;
   }
 }
 
@@ -2088,6 +2090,49 @@ h4 { font-size: var(--font-size-xl); }
 .award-slide__download:hover {
   background-color: var(--color-primary);
   color: var(--text-on-primary);
+}
+
+.award-slide--locked .award-slide__title,
+.award-slide--locked .award-slide__desc {
+  opacity: 0.7;
+}
+
+.award-slide--locked .award-slide__image {
+  filter: grayscale(80%);
+  opacity: 0.5;
+}
+
+.award-slide--locked .award-slide__sticker:hover .award-slide__image {
+  transform: none;
+}
+
+.award-slide__lock {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 52px;
+  height: 52px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  box-shadow: var(--shadow-sm);
+  z-index: 1;
+}
+
+.award-slide__lock svg {
+  width: 22px;
+  height: 22px;
+}
+
+.award-slide__locked-text {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
 }
 
 @media (min-width: 768px) {
